@@ -2,5 +2,6 @@
 
 int main() {
 	std::cout << "Hello Adventurer!" << std::endl;
-	system("pause");
+	
+	//system("pause"); //Needed with Visual Studio Windows to pause program
 }
