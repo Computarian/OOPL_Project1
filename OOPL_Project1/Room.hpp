@@ -40,4 +40,4 @@ private:
 	std::vector<Item*> items_;
 };
 
-#endif ROOM_HPP
+#endif //ROOM_HPP
