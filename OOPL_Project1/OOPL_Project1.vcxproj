@@ -115,7 +115,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CombatUnit.cpp" />
+    <ClCompile Include="Dungeon.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Mimic.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Room.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CombatUnit.hpp" />
+    <ClInclude Include="Dungeon.hpp" />
+    <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="GameWorld.hpp" />
+    <ClInclude Include="Item.hpp" />
+    <ClInclude Include="Mimic.hpp" />
+    <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Room.hpp" />
+    <ClInclude Include="Spawnable.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
