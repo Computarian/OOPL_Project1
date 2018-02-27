@@ -50,7 +50,8 @@ Enemy* Room::targetEnemy() {
 
 
 void Room::removeEnemy(Enemy* enemy) {
-
+	// delete enemy
+	// remove pointer fromr vector/list
 }
 
 

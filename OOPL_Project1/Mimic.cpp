@@ -1,8 +1,13 @@
 #include "Mimic.hpp"
 
 
-Mimic::Mimic(): Enemy(this->defaultHealth, this->defaultDamage, "Mimic") {
+Mimic::Mimic(): Enemy(Mimic::defaultHealth, Mimic::defaultDamage, "Mimic") {
 	std::cout << "Mimic health: " << this->defaultHealth << " Mimic damage: " << this->defaultDamage << std::endl;
+}
+
+
+Mimic::Mimic(int health, int damage): Enemy(health, damage, "Mimic"){
+
 }
 
 

@@ -10,7 +10,7 @@ Dungeon::Dungeon(){
 	//Creating the second room
 	Room* secondRoom = new Room(nullptr, start, nullptr, nullptr, "It's the second room!");
 	start->setNorth(secondRoom);
-	//Enemy* Mickey = new Enemy(100, 200, "Mimic");
+	//Mimic* mickey = new Mimic(100, 200);
 	Mimic* mickey = new Mimic();
 	mickey->PrintStats();
 	secondRoom->addEnemy(mickey);
@@ -26,3 +26,7 @@ Dungeon::~Dungeon(){
 Room* Dungeon::getStartRoom() {
 	return this->start_room_;
 }
+
+
+//room generator
+//look up table for strings?

@@ -7,11 +7,12 @@
 class Mimic: public Enemy {
 public:
 	Mimic();
+	Mimic(int health, int damage);
 	//~Mimic();
 	//void Spawn(Dungeon* dungeon);
 private:
-	const int defaultHealth = 200;
-	const int defaultDamage = 50;
+	const static int defaultHealth = 200;
+	const static int defaultDamage = 50;
 };
 
 #endif //MIMIC_HPP
