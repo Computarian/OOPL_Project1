@@ -18,15 +18,17 @@ Dungeon::Dungeon(){
 }
 
 
-Dungeon::~Dungeon(){
-
-}
-
-
 Room* Dungeon::getStartRoom() {
 	return this->start_room_;
 }
 
 
 //room generator
+void Dungeon::generateRooms() {
+	for (int i = 0; i < DUNGEON_SIZE; i++) {
+		Room* newRoom = new Room(nullptr, nullptr, nullptr, nullptr);
+		dungeon_.push_back(newRoom);
+	}
+}
+
 //look up table for strings?

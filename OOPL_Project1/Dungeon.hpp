@@ -1,5 +1,6 @@
 #ifndef DUNGEON_HPP
 #define DUNGEON_HPP
+#define DUNGEON_SIZE 20
 
 #include <vector>
 #include "Room.hpp"
@@ -10,10 +11,11 @@ class Dungeon
 {
 public:
 	Dungeon();
-	~Dungeon();
 	Room* getStartRoom();
+	void generateRooms();
 private:
 	Room * start_room_;
+	std::vector<Room*> dungeon_;
 };
 
 #endif //DUNGEON_HPP

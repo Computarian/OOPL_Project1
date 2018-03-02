@@ -14,8 +14,9 @@ public:
 	~Room();
 	// Room constructors, construct room based off type, all rooms have pointers to N,S,E,W, descriptions
 	// some rooms have treasures, monsters, or both
-	Room(Room* north, Room* south, Room* east, Room* west, std::string description);
+	Room(Room* north, Room* south, Room* east, Room* west);
 	void getDescription();
+	void setDescription(std::string description);
 	void addEnemy(Enemy* enemy);
 	void addItem(Item* item);
 	bool hasEnemies();

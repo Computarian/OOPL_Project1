@@ -12,17 +12,21 @@ Room::~Room() {
 }
 
 
-Room::Room(Room* north, Room* south, Room* east, Room* west, std::string description) {
+Room::Room(Room* north, Room* south, Room* east, Room* west) {
 	this->north_ = north;
 	this->south_ = south;
 	this->east_ = east;
 	this->west_ = west;
-	this->description_ = description;
 }
 
 
 void Room::getDescription() {
 	std::cout << description_ << std::endl;
+}
+
+
+void Room::setDescription(std::string description) {
+	this->description_ = description;
 }
 
 
