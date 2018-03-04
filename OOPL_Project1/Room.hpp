@@ -19,10 +19,12 @@ public:
 	void getDescription();
 	void setDescription(std::string description);
 	void addEnemies(std::vector<Enemy*> enemies);
-	void addItem(Item* item);
-
+	void addItems(std::vector<Item*> items);
+	std::vector<Item*> getItems();
+	void removeItem(Item* item);
 	bool hasEnemies();
-	Enemy* targetEnemy();
+	std::vector<Enemy*> getEnemies();
+	Enemy* targetEnemy(Enemy* enemy);
 	void removeEnemy(Enemy* enemy);
 
 	Room* getNorth();
@@ -30,10 +32,6 @@ public:
 	Room* getEast();
 	Room* getWest();
 
-	void setNorth(Room* north);
-	void setSouth(Room* south);
-	void setEast(Room* east);
-	void setWest(Room* west);
 private:
 	Room* north_;
 	Room* south_;

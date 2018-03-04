@@ -1,13 +1,14 @@
 #ifndef DUNGEON_HPP
 #define DUNGEON_HPP
 
-#define DUNGEON_SIZE 2
-#define NUM_DOORS 4
+#define DUNGEON_SIZE 3
 
 #include <vector>
 #include "Room.hpp"
 #include "Enemy.hpp"
 #include "Mimic.hpp"
+#include "Item.hpp"
+#include "HealthPotion.hpp"
 
 class Dungeon
 {
@@ -21,6 +22,7 @@ public:
 	void generateEnemies();
 	void roomTables();
 	void enemyTable();
+	void itemTable();
 private:
 	Room * start_room_;
 	std::vector<Room*> dungeon_;

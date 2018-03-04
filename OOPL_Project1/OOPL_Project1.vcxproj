@@ -119,6 +119,7 @@
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mimic.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Dungeon.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="GameWorld.hpp" />
+    <ClInclude Include="HealthPotion.hpp" />
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="Mimic.hpp" />
     <ClInclude Include="Player.hpp" />

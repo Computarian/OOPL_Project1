@@ -6,7 +6,7 @@
 
 class Mimic: public Enemy {
 public:
-	Mimic();
+	Mimic(std::string name);
 	Mimic(int health, int damage);
 	//~Mimic();
 	//void Spawn(Dungeon* dungeon);

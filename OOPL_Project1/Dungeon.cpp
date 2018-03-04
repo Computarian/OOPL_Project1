@@ -6,6 +6,7 @@ Dungeon::Dungeon(){
 
 	generateRooms();
 	roomTables();
+	itemTable();
 	enemyTable();
 
 	generateDoors();
@@ -61,7 +62,9 @@ void Dungeon::generateDescriptions() {
 
 
 void Dungeon::generateItems() {
-
+	for (int i = 0; i < DUNGEON_SIZE; i++) {
+		dungeon_[i]->addItems(items_[i]);
+	}
 }
 
 
@@ -74,21 +77,32 @@ void Dungeon::generateEnemies() {
 
 void Dungeon::roomTables() {
 	// room doors to other rooms
-	doors_ = { { dungeon_[1], nullptr, nullptr, nullptr }, 
-				{ nullptr, dungeon_[0], nullptr, nullptr }};
+	doors_ = { { dungeon_[1], nullptr, dungeon_[2], nullptr }, 
+				{ nullptr, dungeon_[0], nullptr, nullptr },
+				{nullptr, nullptr, nullptr, dungeon_[0]} };
 
 	// room descriptions
 	descriptions_ = {  "It's the start room!" ,
-						"It's the second room!" };
-
-	// items
+						"It's the Mimics' room!",
+						"It's the test item room!"};
 
 }
 
+
 void Dungeon::enemyTable() {
 	// enemies
-	Mimic* mickey = new Mimic();
-	Mimic* mickeyJr = new Mimic();
+	Mimic* mickey = new Mimic("Mickey the Mimic");
+	Mimic* mickeyJr = new Mimic("Mickey Jr the Mimic");
 	enemies_ = { {},
-				{ mickey} };
+				{ mickey, mickeyJr},
+				{} };
+}
+
+
+void Dungeon::itemTable() {
+	// items
+	HealthPotion* healPotion1 = new HealthPotion();
+	items_ = { {},
+				{},
+				{healPotion1} };
 }

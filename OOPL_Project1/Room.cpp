@@ -33,8 +33,26 @@ void Room::addEnemies(std::vector<Enemy*> enemies){
 }
 
 
-void Room::addItem(Item* item) {
-	this->items_.push_back(item);
+void Room::addItems(std::vector<Item*> items) {
+	this->items_ = items;
+}
+
+
+std::vector<Item*> Room::getItems() {
+	return this->items_;
+}
+
+
+void Room::removeItem(Item* item) {
+	//delete enemy;
+	for (int i = 0; i < items_.size(); i++) {
+		if (item == items_[i]) {
+			// delete item
+			delete item;
+			// remove pointer from vector/list
+			items_.erase(items_.begin() + i);
+		}
+	}
 }
 
 
@@ -46,16 +64,30 @@ bool Room::hasEnemies() {
 }
 
 
-Enemy* Room::targetEnemy() {
-	return this->enemies_[0];
+std::vector<Enemy*> Room::getEnemies() {
+	return this->enemies_;
+}
+
+
+Enemy* Room::targetEnemy(Enemy * enemy) {
+	for (int i = 0; i < enemies_.size(); i++) {
+		if (enemy == enemies_[i]) {
+			return enemies_[i];
+		}
+	}
 }
 
 
 void Room::removeEnemy(Enemy* enemy) {
 	//delete enemy;
-	enemies_.erase(enemies_.begin());
-	// delete enemy
-	// remove pointer fromr vector/list
+	for (int i = 0; i < enemies_.size(); i++) {
+		if (enemy == enemies_[i]) {
+			// delete enemy
+			delete enemy;
+			// remove pointer fromr vector/list
+			enemies_.erase(enemies_.begin() + i);
+		}
+	}
 }
 
 
@@ -77,24 +109,3 @@ Room* Room::getEast() {
 Room* Room::getWest() {
 	return this->west_;
 }
-
-
-void Room::setNorth(Room* north) {
-	this->north_ = north;
-}
-
-
-void Room::setSouth(Room* south) {
-	this->south_ = south;
-}
-
-
-void Room::setEast(Room* east) {
-	this->east_ = east;
-}
-
-
-void Room::setWest(Room* west) {
-	this->west_ = west;
-}
-
