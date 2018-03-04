@@ -3,20 +3,18 @@
 
 
 Room::Room(){
-
+	this->north_ = nullptr;
+	this->south_ = nullptr;
+	this->east_ = nullptr;
+	this->west_ = nullptr;
 }
 
 
-Room::~Room() {
-
-}
-
-
-Room::Room(Room* north, Room* south, Room* east, Room* west) {
-	this->north_ = north;
-	this->south_ = south;
-	this->east_ = east;
-	this->west_ = west;
+void Room::setRoomDoors(std::vector<Room*> doors) {
+	this->north_ = doors[0];
+	this->south_ = doors[1];
+	this->east_ = doors[2];
+	this->west_ = doors[3];
 }
 
 
@@ -30,8 +28,8 @@ void Room::setDescription(std::string description) {
 }
 
 
-void Room::addEnemy(Enemy* enemy) {
-	this->enemies_.push_back(enemy);
+void Room::addEnemies(std::vector<Enemy*> enemies){
+	this->enemies_ = enemies;
 }
 
 
@@ -54,6 +52,8 @@ Enemy* Room::targetEnemy() {
 
 
 void Room::removeEnemy(Enemy* enemy) {
+	//delete enemy;
+	enemies_.erase(enemies_.begin());
 	// delete enemy
 	// remove pointer fromr vector/list
 }

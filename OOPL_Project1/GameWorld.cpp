@@ -87,7 +87,7 @@ void GameWorld::combatMenu(Room* currentRoom) {
 		}
 		if (currentRoom->targetEnemy()->GetHealth() < 1) {
 			std::cout << "The " << currentRoom->targetEnemy()->GetName() << " was defeated!" << std::endl;
-			//currentRoom->getFirstEnemy();
+			delete currentRoom->targetEnemy();
 			currentRoom->removeEnemy(currentRoom->targetEnemy());
 
 		} else {

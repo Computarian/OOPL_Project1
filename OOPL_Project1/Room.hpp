@@ -1,6 +1,8 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
+#define NUM_DOORS 4
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -11,17 +13,18 @@ class Room
 {
 public:
 	Room();
-	~Room();
 	// Room constructors, construct room based off type, all rooms have pointers to N,S,E,W, descriptions
 	// some rooms have treasures, monsters, or both
-	Room(Room* north, Room* south, Room* east, Room* west);
+	void setRoomDoors(std::vector<Room*> doors);
 	void getDescription();
 	void setDescription(std::string description);
-	void addEnemy(Enemy* enemy);
+	void addEnemies(std::vector<Enemy*> enemies);
 	void addItem(Item* item);
+
 	bool hasEnemies();
 	Enemy* targetEnemy();
 	void removeEnemy(Enemy* enemy);
+
 	Room* getNorth();
 	Room* getSouth();
 	Room* getEast();
