@@ -48,7 +48,7 @@ void Room::removeItem(Item* item) {
 	for (int i = 0; i < items_.size(); i++) {
 		if (item == items_[i]) {
 			// delete item
-			delete item;
+			//delete item;
 			// remove pointer from vector/list
 			items_.erase(items_.begin() + i);
 		}

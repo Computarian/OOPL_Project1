@@ -45,6 +45,12 @@
     <ClCompile Include="HealthPotion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chinchilla.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWorld.hpp">
@@ -75,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HealthPotion.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chinchilla.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterBall.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

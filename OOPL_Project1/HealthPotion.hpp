@@ -2,7 +2,6 @@
 #define HEALTHPOTION_HPP
 
 #include "Item.hpp"
-#include "CombatUnit.hpp"
 
 class HealthPotion : public Item {
 public:

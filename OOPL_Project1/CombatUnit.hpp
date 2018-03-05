@@ -7,17 +7,21 @@
 #include <string>
 #include "Item.hpp"
 
+class Item;
+
 class CombatUnit {
 public:
 	CombatUnit(int health, int damage, std::string name);
 	int GetHealth();
 	int GetDamage();
 	std::string GetName();
-	void UseItem(Item* item, CombatUnit* target);
+	void SetName(std::string newName);
+
+	void UseItem(Item* name, CombatUnit* target);
 	void ModifyHealth(int amount);
 	void DealDamage(CombatUnit* target);
 	void PrintStats();
-	void SetName(std::string newName);
+	
 protected:
 	int health;
 	int damage;

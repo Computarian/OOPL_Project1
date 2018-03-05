@@ -4,8 +4,11 @@
 GameWorld::GameWorld() {
 	//Create new Player: Player(int health, int damage, std::string name);
 	this->player_ = new Player(1000, 100, "Chappie");
+
 	HealthPotion* healpotion0 = new HealthPotion();
 	player_->AddItemToInventory(healpotion0);
+	MasterBall* newBall = new MasterBall();
+	player_->AddItemToInventory(newBall);
 	Dungeon* newDungeon = new Dungeon();
 	displayMenu(newDungeon->getStartRoom());
 }
@@ -19,10 +22,10 @@ void GameWorld::displayMenu(Room* currentRoom) {
 	Dungeon interaction
 	{SEARCH, TAKE, OPEN, LOOK, INVENTORY}
 	*/
-	currentRoom->getDescription();
 	if (currentRoom->hasEnemies()) {
 		combatMenu(currentRoom);
 	}
+	currentRoom->getDescription();
 	do {
 		input = "";
 		std::cout << "1. NORTH" << "  " << "2. SOUTH" << "     " << "3. EAST" << "   " << "4. WEST" << std::endl;
@@ -95,8 +98,11 @@ void GameWorld::displayMenu(Room* currentRoom) {
 			currentRoom->getDescription();
 		}
 		if (input == "9") {
-			std::cout << player_->GetName() << "'s Inventory"<<std::endl;
-			this->player_->printInventory();
+			if (player_->getInventory().empty()) {
+				std::cout << "Inventory is empty!" << std::endl;
+			} else {
+				openInventory(currentRoom);
+			}
 		}
 		if (input == "10") {
 			this->player_->PrintStats();
@@ -104,6 +110,49 @@ void GameWorld::displayMenu(Room* currentRoom) {
 	} while (1);
 }
 
+
+// Inventory Menu, can be used during combat
+void GameWorld::openInventory(Room* currentRoom) {
+	std::string input;
+
+	do {
+		input = "";
+		std::cout << "1. View Inventory" << std::endl;
+		std::cout << "2. Use Item" << std::endl;
+		std::cout << "q. quit" << std::endl;
+		getline(std::cin, input);
+
+		if (input == "1") {
+			std::cout << player_->GetName() << "'s Inventory" << std::endl;
+			this->player_->printInventory();
+		}
+		if (input == "2") {
+			do {
+				input = "";
+				std::cout << "Select which item?" << std::endl;
+				this->player_->printInventory();
+				getline(std::cin, input);
+
+				for (int i = 0; i < player_->getInventory().size(); i++) {
+					if (input == player_->getInventory()[i]->GetName()) {
+						player_->UseItem(player_->getInventory()[i], player_);
+						player_->removeItemFromInventory(player_->getInventory()[i]);
+					}
+				}
+			} while (input != "q" && !player_->getInventory().empty());
+		}
+	} while (input != "q");
+}
+
+
+// Used to select target during combat
+/*
+CombatUnit* selectTarget(Room* currentRoom) {
+
+}
+*/
+
+// Displays combat menu when an enemy is encountered upon entering a room
 void GameWorld::combatMenu(Room* currentRoom) {
 	std::string input;
 
@@ -137,7 +186,7 @@ void GameWorld::combatMenu(Room* currentRoom) {
 	} while (1);
 	*/
 	
-	currentRoom->targetEnemy(currentRoom->getEnemies()[0])->PrintStats();
+	//currentRoom->targetEnemy(currentRoom->getEnemies()[0])->PrintStats();
 	while (currentRoom->hasEnemies()) {
 		currentRoom->targetEnemy(currentRoom->getEnemies()[0]);
 		if (player_->GetHealth() > 0) {

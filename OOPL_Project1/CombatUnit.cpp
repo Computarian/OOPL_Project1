@@ -5,7 +5,7 @@ CombatUnit::CombatUnit(int health, int damage, std::string name) {
 	this->health = health;
 	this->damage = damage;
 	this->name = name;
-	std::cout << "CombatUnit health: " << this->health << " CombatUnit damage: " << this->damage << std::endl;
+	//std::cout << "CombatUnit health: " << this->health << " CombatUnit damage: " << this->damage << std::endl;
 
 }
 
@@ -23,6 +23,13 @@ int CombatUnit::GetDamage() {
 std::string CombatUnit::GetName() {
 	return this->name;
 }
+
+
+void CombatUnit::SetName(std::string newName) {
+	this->name = newName;
+}
+
+
 void CombatUnit::ModifyHealth(int amount) {
 	this->health -= amount;
 }
@@ -42,9 +49,4 @@ void CombatUnit::UseItem(Item* name, CombatUnit* target) {
 
 void CombatUnit::PrintStats() {
 	std::cout << this->name << "'s health: " << this->health << "\tDamage: " << this->damage << std::endl;
-}
-
-
-void CombatUnit::SetName(std::string newName) {
-	this->name = newName;
 }

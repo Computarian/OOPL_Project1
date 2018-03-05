@@ -12,13 +12,28 @@ void Player::AddItemToInventory(Item* item) {
 }
 
 
+void Player::removeItemFromInventory(Item* item) {
+	for (int i = 0; i < inventory_.size(); i++) {
+		if (inventory_[i] == item) {
+			delete item;
+			inventory_.erase(inventory_.begin() + i);
+		}
+	}
+}
+
+
 void Player::printInventory() {
 	if (inventory_.empty()) {
 		std::cout << "Inventory is empty!" << std::endl;
 	}
 	else {
 		for (int i = 0; i < inventory_.size(); i++) {
-			inventory_.at(i)->PrintData();
+			inventory_[i]->PrintData();
 		}
 	}
+}
+
+
+std::vector<Item*> Player::getInventory() {
+	return this->inventory_;
 }

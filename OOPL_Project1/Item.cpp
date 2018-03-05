@@ -2,7 +2,7 @@
 
 Item::Item(std::string name, std::string description) {
 	this->name = name;
-	this->description = description;
+	this->description_ = description;
 }
 
 std::string Item::GetName() {
@@ -10,9 +10,15 @@ std::string Item::GetName() {
 }
 
 std::string Item::GetDescription() {
-	return this->description;
+	return this->description_;
 }
 
+
+void Item::SetDescription(std::string description) {
+	this->description_ = description;
+}
+
+
 void Item::PrintData() {
-	std::cout << this->name << "\t" << this->description << std::endl;
+	std::cout << GetName()<< "\t" << GetDescription() << std::endl;
 }
