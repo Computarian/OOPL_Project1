@@ -8,6 +8,7 @@
 #include <vector>
 #include "Enemy.hpp"
 #include "Item.hpp"
+#include "Chest.hpp"
 
 class Room
 {
@@ -18,14 +19,21 @@ public:
 	void setRoomDoors(std::vector<Room*> doors);
 	void getDescription();
 	void setDescription(std::string description);
-	void addEnemies(std::vector<Enemy*> enemies);
+
 	void addItems(std::vector<Item*> items);
 	std::vector<Item*> getItems();
 	void removeItem(Item* item);
-	bool hasEnemies();
+
+	void addChests(std::vector < Chest*> chests);
+	std::vector<Chest*> getChests();
+	void removeChest(Chest* chest);
+
+	void addEnemies(std::vector<Enemy*> enemies);
 	std::vector<Enemy*> getEnemies();
-	Enemy* targetEnemy(Enemy* enemy);
 	void removeEnemy(Enemy* enemy);
+
+	bool hasEnemies();
+	Enemy* targetEnemy(Enemy* enemy);
 
 	Room* getNorth();
 	Room* getSouth();
@@ -33,13 +41,15 @@ public:
 	Room* getWest();
 
 private:
+	std::string description_;
+	std::vector<Item*> items_;
+	std::vector<Chest*> chests_;
+	std::vector<Enemy*> enemies_;
 	Room* north_;
 	Room* south_;
 	Room* east_;
 	Room* west_;
-	std::string description_;
-	std::vector<Enemy*> enemies_;
-	std::vector<Item*> items_;
+	
 };
 
 #endif //ROOM_HPP

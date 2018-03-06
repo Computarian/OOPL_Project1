@@ -28,11 +28,6 @@ void Room::setDescription(std::string description) {
 }
 
 
-void Room::addEnemies(std::vector<Enemy*> enemies){
-	this->enemies_ = enemies;
-}
-
-
 void Room::addItems(std::vector<Item*> items) {
 	this->items_ = items;
 }
@@ -44,13 +39,53 @@ std::vector<Item*> Room::getItems() {
 
 
 void Room::removeItem(Item* item) {
-	//delete enemy;
 	for (int i = 0; i < items_.size(); i++) {
 		if (item == items_[i]) {
-			// delete item
-			//delete item;
 			// remove pointer from vector/list
 			items_.erase(items_.begin() + i);
+		}
+	}
+}
+
+
+void Room::addChests(std::vector < Chest*> chests) {
+	this->chests_ = chests;
+}
+
+
+std::vector<Chest*> Room::getChests() {
+	return this->chests_;
+}
+
+
+void Room::removeChest(Chest* chest) {
+	for (int i = 0; i < chests_.size(); i++) {
+		if (chest == chests_[i]) {
+			delete chest;
+			chests_.erase(chests_.begin() + i);
+		}
+	}
+}
+
+
+void Room::addEnemies(std::vector<Enemy*> enemies) {
+	this->enemies_ = enemies;
+}
+
+
+std::vector<Enemy*> Room::getEnemies() {
+	return this->enemies_;
+}
+
+
+void Room::removeEnemy(Enemy* enemy) {
+	//delete enemy;
+	for (int i = 0; i < enemies_.size(); i++) {
+		if (enemy == enemies_[i]) {
+			// delete enemy
+			delete enemy;
+			// remove pointer fromr vector/list
+			enemies_.erase(enemies_.begin() + i);
 		}
 	}
 }
@@ -64,28 +99,11 @@ bool Room::hasEnemies() {
 }
 
 
-std::vector<Enemy*> Room::getEnemies() {
-	return this->enemies_;
-}
-
 
 Enemy* Room::targetEnemy(Enemy * enemy) {
 	for (int i = 0; i < enemies_.size(); i++) {
 		if (enemy == enemies_[i]) {
 			return enemies_[i];
-		}
-	}
-}
-
-
-void Room::removeEnemy(Enemy* enemy) {
-	//delete enemy;
-	for (int i = 0; i < enemies_.size(); i++) {
-		if (enemy == enemies_[i]) {
-			// delete enemy
-			delete enemy;
-			// remove pointer fromr vector/list
-			enemies_.erase(enemies_.begin() + i);
 		}
 	}
 }

@@ -36,7 +36,7 @@ void CombatUnit::ModifyHealth(int amount) {
 
 
 void CombatUnit::DealDamage(CombatUnit* target) {
-	std::cout << this->name << " attacks!" << std::endl;
+	std::cout << this->name << " attacks " << target->GetName() << " for " << this->damage << " damage!" << std::endl;
 	target->ModifyHealth(this->damage);
 }
 

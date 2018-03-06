@@ -12,14 +12,19 @@ public:
 	GameWorld();
 	void displayMenu(Room* currentRoom);
 	void openInventory(Room* currentRoom);
-	CombatUnit* selectTarget(Room* currentRoom);
+	
 	void combatMenu(Room* currentRoom);
+	Enemy* selectTarget(Room* currentRoom);
+	void combatTurn(Room* currentRoom, Enemy* target);
 	
 private:
 	Player * player_;
-
+	//Room* current_room_;
+	Room* prev_room_;
 	// combat bool so player can only use one item per turn in combat (maybe something else)
-	bool combat_;
+	// once player commits to turn, then combat turns go through?
+	bool take_turn;
+	bool gameover_; //when player health is < 1
 };
 
 #endif //GAMEWORLD_HPP

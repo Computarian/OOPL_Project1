@@ -51,15 +51,15 @@
     <ClCompile Include="MasterBall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWorld.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Room.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Spawnable.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CombatUnit.hpp">
@@ -87,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MasterBall.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Chest.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

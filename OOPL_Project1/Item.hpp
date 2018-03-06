@@ -4,11 +4,10 @@
 #include "CombatUnit.hpp"
 #include <iostream>
 #include <string>
-#include "Spawnable.hpp"
 
 class CombatUnit;
 
-class Item /*: public Spawnable*/ {
+class Item  {
 public:
 	Item(std::string name, std::string description);
 	std::string GetName();

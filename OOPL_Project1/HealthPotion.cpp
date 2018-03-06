@@ -2,7 +2,7 @@
 
 
 
-HealthPotion::HealthPotion() : Item("Health Potion", "Restores 5hp to the target.") {
+HealthPotion::HealthPotion() : Item("Cookie", "Restores 5hp to the target.") {
 
 }
 

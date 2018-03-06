@@ -5,7 +5,7 @@
 #include "CombatUnit.hpp"
 #include "Item.hpp"
 
-class Enemy : /*public Spawnable,*/ public CombatUnit {
+class Enemy : public CombatUnit {
 public:
 	Enemy(int health, int damage, std::string name);
 };

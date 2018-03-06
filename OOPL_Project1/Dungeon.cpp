@@ -8,11 +8,13 @@ Dungeon::Dungeon(){
 	doorTable();
 	descriptionTable();
 	itemTable();
+	chestTable();
 	enemyTable();
 
 	generateDoors();
 	generateDescriptions();
 	generateItems();
+	generateChests();
 	generateEnemies();
 }
 
@@ -57,6 +59,13 @@ void Dungeon::generateItems() {
 }
 
 
+void Dungeon::generateChests() {
+	for (int i = 0; i < DUNGEON_SIZE; i++) {
+		dungeon_[i]->addChests(chests_[i]);
+	}
+}
+
+
 void Dungeon::generateEnemies() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
 		dungeon_[i]->addEnemies(enemies_[i]);
@@ -91,6 +100,20 @@ void Dungeon::itemTable() {
 	items_ = { {},
 				{},
 				{healPotion1},
+				{} };
+}
+
+
+void Dungeon::chestTable() {
+	//items for chests
+	std::vector<Item*> chest0 = { new HealthPotion(), new HealthPotion };
+
+	// chests list
+	Chest* firstChest = new Chest(chest0, "Old Chest");
+
+	chests_ = { {},
+				{},
+				{firstChest},
 				{} };
 }
 

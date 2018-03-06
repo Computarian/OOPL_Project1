@@ -6,13 +6,15 @@
 #include <vector>
 #include "Room.hpp"
 
-#include "Enemy.hpp"
-#include "Mimic.hpp"
-#include "Chinchilla.hpp"
-
 #include "Item.hpp"
 #include "HealthPotion.hpp"
 #include "MasterBall.hpp"
+
+#include "Chest.hpp"
+
+#include "Enemy.hpp"
+#include "Mimic.hpp"
+#include "Chinchilla.hpp"
 
 class Dungeon
 {
@@ -25,11 +27,13 @@ public:
 	void generateDoors();
 	void generateDescriptions();
 	void generateItems();
+	void generateChests();
 	void generateEnemies();
 
 	void doorTable();
 	void descriptionTable();
 	void itemTable();
+	void chestTable();
 	void enemyTable();
 
 private:
@@ -37,6 +41,7 @@ private:
 	std::vector < std::vector<Room*>> doors_;
 	std::vector<std::string> descriptions_;
 	std::vector<std::vector<Item*>> items_;
+	std::vector < std::vector<Chest*>> chests_;
 	std::vector < std::vector<Enemy*>> enemies_;
 };
 

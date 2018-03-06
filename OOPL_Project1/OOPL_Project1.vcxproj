@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Chinchilla.cpp" />
     <ClCompile Include="CombatUnit.cpp" />
     <ClCompile Include="Dungeon.cpp" />
@@ -129,6 +130,7 @@
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Chest.hpp" />
     <ClInclude Include="Chinchilla.hpp" />
     <ClInclude Include="CombatUnit.hpp" />
     <ClInclude Include="Dungeon.hpp" />
@@ -140,7 +142,6 @@
     <ClInclude Include="Mimic.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Room.hpp" />
-    <ClInclude Include="Spawnable.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
