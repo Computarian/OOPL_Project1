@@ -9,7 +9,7 @@
 #include "Item.hpp"
 #include "HealthPotion.hpp"
 #include "MasterBall.hpp"
-
+#include "ManaPotion.hpp"
 #include "Chest.hpp"
 
 #include "Enemy.hpp"

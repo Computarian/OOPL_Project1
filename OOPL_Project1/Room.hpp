@@ -30,7 +30,7 @@ public:
 
 	void addEnemies(std::vector<Enemy*> enemies);
 	std::vector<Enemy*> getEnemies();
-	void removeEnemy(Enemy* enemy);
+	void removeEnemy(CombatUnit* enemy);
 
 	bool hasEnemies();
 	Enemy* targetEnemy(Enemy* enemy);

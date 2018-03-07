@@ -108,7 +108,18 @@ void GameWorld::displayMenu(Room* currentRoom) {
 				std::cout << "There are no chests in here" << std::endl;
 			}
 			else {
+				
 				for (int i = 0; i < currentRoom->getChests().size(); i++) {
+					std::cout << player_->GetName() << " opens the "<<currentRoom->getChests()[i]->getName()<<" and it contains: " << std::endl;
+					if(currentRoom->getChests()[i]->getEnemy()){
+						std::cout<<currentRoom->getChests()[i]->getEnemy()->GetName() << " startles you!" << std::endl;
+						// slightly messy way to work around targeting system being based off room enemies
+						std::vector<Enemy*> mimic = currentRoom->getEnemies();
+						mimic.push_back(currentRoom->getChests()[i]->getEnemy());
+						currentRoom->addEnemies(mimic);
+						currentRoom->getChests()[i]->setChestEnemy(nullptr);
+						combatMenu(currentRoom);
+					}
 					for (int j = 0; j < currentRoom->getChests()[i]->getLoot().size(); j++) {
 						player_->AddItemToInventory(currentRoom->getChests()[i]->getLoot()[j]);
 						std::cout << player_->GetName() << " added " << currentRoom->getChests()[i]->getLoot()[j]->GetName();
@@ -157,12 +168,12 @@ void GameWorld::openInventory(Room* currentRoom) {
 		if (input == "2") {
 			do {
 				input = "";
-				std::cout << "Select which item?" << std::endl;
+				std::cout << "Select which item? Press q to exit" << std::endl;
 				this->player_->printInventory();
 				getline(std::cin, input);
 
 				for (int i = 0; i < player_->getInventory().size(); i++) {
-					if (input == player_->getInventory()[i]->GetName()) {
+					if (input == player_->getInventory()[i]->GetName() || input == std::to_string(i + 1)) {
 						player_->UseItem(player_->getInventory()[i], player_);
 						player_->removeItemFromInventory(player_->getInventory()[i]);
 						break;
@@ -177,6 +188,7 @@ void GameWorld::openInventory(Room* currentRoom) {
 // Displays combat menu when an enemy is encountered upon entering a room
 void GameWorld::combatMenu(Room* currentRoom) {
 	std::string input;
+	std::string magicSpell;
 	Enemy* target = nullptr;
 
 	for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
@@ -184,6 +196,9 @@ void GameWorld::combatMenu(Room* currentRoom) {
 	}
 	do {
 		input = "";
+		magicSpell = "";
+		target = nullptr;
+
 		this->player_->PrintStats();
 		std::cout << "1. Attack" << std::endl;
 		std::cout << "2. Magic" << std::endl;
@@ -195,12 +210,17 @@ void GameWorld::combatMenu(Room* currentRoom) {
 		if (input == "1") {
 			target = selectTarget(currentRoom);
 			if (target) {
-				combatTurn(currentRoom, target);
+				combatTurn(currentRoom, "attack", target);
 			}
 		}
 		if (input == "2") {
-
-
+			magicSpell = magicMenu(currentRoom);
+			if (magicSpell != "") {
+				target = selectTarget(currentRoom);
+				if (target) {
+					combatTurn(currentRoom, magicSpell, target);
+				}
+			}
 		}
 		if (input == "3") {
 			if (player_->getInventory().empty()) {
@@ -226,7 +246,7 @@ void GameWorld::combatMenu(Room* currentRoom) {
 		}
 		// Enemies take their turn
 		for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
-			currentRoom->getEnemies()[i]->DealDamage(player_);
+			currentRoom->getEnemies()[i]->makeMove("attack", player_);
 			if (player_->GetHealth() < 1) {
 				//end game from combat somehow
 			}
@@ -258,11 +278,28 @@ Enemy* GameWorld::selectTarget(Room* currentRoom) {
 }
 
 
-void GameWorld::combatTurn(Room* currentRoom, Enemy* target) {	
-	player_->DealDamage(target);
+void GameWorld::combatTurn(Room* currentRoom, std::string move, CombatUnit* target) {
+	player_->makeMove(move, target);
 	if (target->GetHealth() < 1) {
 		std::cout << target->GetName() << " was defeated!" << std::endl;
 		//delete currentRoom->targetEnemy();
 		currentRoom->removeEnemy(target);
 	}
+}
+
+
+std::string GameWorld::magicMenu(Room* currentRoom) {
+	std::string input;
+
+	do {
+		input = "";
+		std::cout << "1. Lightning Bolt!" << std::endl;
+		std::cout << "q. Exit Magic Menu" << std::endl;
+		getline(std::cin, input);
+
+		if (input == "1") {
+			return "bolt";
+		}
+	} while (input != "q");
+	return "";
 }

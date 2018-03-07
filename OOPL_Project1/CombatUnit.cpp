@@ -35,6 +35,11 @@ void CombatUnit::ModifyHealth(int amount) {
 }
 
 
+void CombatUnit::ModifyMana(int amount) {
+	this->mana_ -= amount;
+}
+
+
 void CombatUnit::DealDamage(CombatUnit* target) {
 	std::cout << this->name << " attacks " << target->GetName() << " for " << this->damage << " damage!" << std::endl;
 	target->ModifyHealth(this->damage);
@@ -48,5 +53,21 @@ void CombatUnit::UseItem(Item* name, CombatUnit* target) {
 
 
 void CombatUnit::PrintStats() {
-	std::cout << this->name << "'s health: " << this->health << "\tDamage: " << this->damage << std::endl;
+	std::cout << this->name << "'s health: " << this->health << "\tDamage: " << this->damage;
+	if (has_mana_) {
+		std::cout << "\tMana: " << this->mana_;
+	}
+	std::cout<<std::endl;
+}
+
+
+void CombatUnit::setMana(bool mana) {
+	has_mana_ = mana;
+}
+
+
+void CombatUnit::makeMove(std::string move, CombatUnit* target) {
+	if (move == "attack") {
+		DealDamage(target);
+	}
 }

@@ -2,6 +2,7 @@
 #define CHEST_HPP
 
 #include <vector>
+#include "Enemy.hpp"
 
 class Item;
 
@@ -10,8 +11,11 @@ public:
 	Chest(std::vector<Item*> loot, std::string name);
 	std::vector<Item*> getLoot();
 	std::string getName();
+	void setChestEnemy(Enemy* chestEnemy);
+	Enemy* getEnemy();
 private:
 	std::vector<Item*> loot_;
+	Enemy* chest_enemy_;
 	std::string name_;
 };
 

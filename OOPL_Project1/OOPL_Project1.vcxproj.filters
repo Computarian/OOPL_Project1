@@ -54,6 +54,9 @@
     <ClCompile Include="Chest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ManaPotion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWorld.hpp">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ManaPotion.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

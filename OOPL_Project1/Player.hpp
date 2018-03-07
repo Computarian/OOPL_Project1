@@ -13,6 +13,8 @@ public:
 	void removeItemFromInventory(Item* item);
 	void printInventory();
 	std::vector<Item*> getInventory();
+	void makeMove(std::string move, CombatUnit* target);
+	void boltMagic(CombatUnit* target);
 private:
 	std::vector<Item*> inventory_;
 };

@@ -124,6 +124,7 @@
     <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ManaPotion.cpp" />
     <ClCompile Include="MasterBall.cpp" />
     <ClCompile Include="Mimic.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="GameWorld.hpp" />
     <ClInclude Include="HealthPotion.hpp" />
     <ClInclude Include="Item.hpp" />
+    <ClInclude Include="ManaPotion.hpp" />
     <ClInclude Include="MasterBall.hpp" />
     <ClInclude Include="Mimic.hpp" />
     <ClInclude Include="Player.hpp" />

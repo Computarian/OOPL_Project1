@@ -78,8 +78,7 @@ std::vector<Enemy*> Room::getEnemies() {
 }
 
 
-void Room::removeEnemy(Enemy* enemy) {
-	//delete enemy;
+void Room::removeEnemy(CombatUnit* enemy) {
 	for (int i = 0; i < enemies_.size(); i++) {
 		if (enemy == enemies_[i]) {
 			// delete enemy

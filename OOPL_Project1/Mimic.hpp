@@ -6,11 +6,8 @@
 class Mimic: public Enemy {
 public:
 	Mimic(std::string name);
-	Mimic(int health, int damage);
-	//~Mimic();
-	//void Spawn(Dungeon* dungeon);
 private:
-	const static int defaultHealth = 200;
+	const static int defaultHealth = 100;
 	const static int defaultDamage = 50;
 };
 

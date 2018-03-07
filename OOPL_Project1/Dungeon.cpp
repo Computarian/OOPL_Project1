@@ -107,12 +107,19 @@ void Dungeon::itemTable() {
 void Dungeon::chestTable() {
 	//items for chests
 	std::vector<Item*> chest0 = { new HealthPotion(), new HealthPotion };
+	std::vector<Item*> vendingMimic = { new ManaPotion(), new ManaPotion(), new ManaPotion() , new ManaPotion() };
+
+	//mimic chest
+	Mimic* mickeySr = new Mimic("Vending Machine Mimic");
 
 	// chests list
 	Chest* firstChest = new Chest(chest0, "Old Chest");
 
+	Chest* mimicChest = new Chest(vendingMimic, "Strange Vending Machine");
+	mimicChest->setChestEnemy(mickeySr);
+
 	chests_ = { {},
-				{},
+				{mimicChest},
 				{firstChest},
 				{} };
 }
