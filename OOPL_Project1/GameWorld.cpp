@@ -143,19 +143,23 @@ void GameWorld::displayMenu(Room* currentRoom) {
 		if (input == "10") {
 			this->player_->PrintStats();
 		}
-	} while (1);
+	} while (player_->GetHealth() > 0);
+
+	std::cout<<"Game Over!"<<std::endl;
 }
 
 
 // Inventory Menu, can be used during combat
 void GameWorld::openInventory(Room* currentRoom) {
 	std::string input;
-
+	CombatUnit* target;
 	std::cout << player_->GetName() << "'s Inventory" << std::endl;
 	this->player_->printInventory();
 
 	do {
 		input = "";
+		target = nullptr;
+
 		std::cout << "1. View Inventory" << std::endl;
 		std::cout << "2. Use Item" << std::endl;
 		std::cout << "q. Exit Inventory" << std::endl;
@@ -171,7 +175,6 @@ void GameWorld::openInventory(Room* currentRoom) {
 				std::cout << "Select which item? Press q to exit" << std::endl;
 				this->player_->printInventory();
 				getline(std::cin, input);
-
 				for (int i = 0; i < player_->getInventory().size(); i++) {
 					if (input == player_->getInventory()[i]->GetName() || input == std::to_string(i + 1)) {
 						player_->UseItem(player_->getInventory()[i], player_);
@@ -188,15 +191,16 @@ void GameWorld::openInventory(Room* currentRoom) {
 // Displays combat menu when an enemy is encountered upon entering a room
 void GameWorld::combatMenu(Room* currentRoom) {
 	std::string input;
-	std::string magicSpell;
-	Enemy* target = nullptr;
+	int magicSpell;
+	CombatUnit* target = nullptr;
+	int randomMove = 0;
 
 	for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
 		std::cout << currentRoom->getEnemies()[i]->GetName() << " has appeared!" << std::endl;
 	}
 	do {
 		input = "";
-		magicSpell = "";
+		magicSpell = 0;
 		target = nullptr;
 
 		this->player_->PrintStats();
@@ -210,12 +214,12 @@ void GameWorld::combatMenu(Room* currentRoom) {
 		if (input == "1") {
 			target = selectTarget(currentRoom);
 			if (target) {
-				combatTurn(currentRoom, "attack", target);
+				combatTurn(currentRoom, 1, target);
 			}
 		}
 		if (input == "2") {
 			magicSpell = magicMenu(currentRoom);
-			if (magicSpell != "") {
+			if (magicSpell != 0) {
 				target = selectTarget(currentRoom);
 				if (target) {
 					combatTurn(currentRoom, magicSpell, target);
@@ -246,7 +250,10 @@ void GameWorld::combatMenu(Room* currentRoom) {
 		}
 		// Enemies take their turn
 		for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
-			currentRoom->getEnemies()[i]->makeMove("attack", player_);
+			// d20 reference >:)
+			randomMove = rand() % 100 + 1;
+			//std::cout << "Random move number: "<< move << std::endl;
+			currentRoom->getEnemies()[i]->makeMove(randomMove, player_);
 			if (player_->GetHealth() < 1) {
 				//end game from combat somehow
 			}
@@ -256,11 +263,11 @@ void GameWorld::combatMenu(Room* currentRoom) {
 
 
 // Used to select target during combat
-Enemy* GameWorld::selectTarget(Room* currentRoom) {
+CombatUnit* GameWorld::selectTarget(Room* currentRoom) {
 	std::string input = "";
 
 	do {
-		std::cout << "Select which enemy? press q to go back" << std::endl;
+		std::cout << "Select which target? press q to go back" << std::endl;
 		for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
 			std::cout << i + 1 <<". " <<currentRoom->getEnemies()[i]->GetName() << std::endl;
 		}
@@ -278,17 +285,24 @@ Enemy* GameWorld::selectTarget(Room* currentRoom) {
 }
 
 
-void GameWorld::combatTurn(Room* currentRoom, std::string move, CombatUnit* target) {
+void GameWorld::combatTurn(Room* currentRoom, int move, CombatUnit* target) {
 	player_->makeMove(move, target);
 	if (target->GetHealth() < 1) {
 		std::cout << target->GetName() << " was defeated!" << std::endl;
+		if (!target->getInventory().empty()) {
+			for (int i = 0; i < target->getInventory().size(); i++) {
+				player_->AddItemToInventory(target->getInventory()[i]);
+				std::cout << player_->GetName() << " added " << target->getInventory()[i]->GetName();
+				std::cout << " to inventory!" << std::endl;
+			}
+		}
 		//delete currentRoom->targetEnemy();
 		currentRoom->removeEnemy(target);
 	}
 }
 
 
-std::string GameWorld::magicMenu(Room* currentRoom) {
+int GameWorld::magicMenu(Room* currentRoom) {
 	std::string input;
 
 	do {
@@ -298,8 +312,8 @@ std::string GameWorld::magicMenu(Room* currentRoom) {
 		getline(std::cin, input);
 
 		if (input == "1") {
-			return "bolt";
+			return 2;
 		}
 	} while (input != "q");
-	return "";
+	return 0;
 }

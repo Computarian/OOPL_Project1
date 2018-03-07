@@ -14,9 +14,9 @@ public:
 	void openInventory(Room* currentRoom);
 	
 	void combatMenu(Room* currentRoom);
-	Enemy* selectTarget(Room* currentRoom);
-	void combatTurn(Room* currentRoom, std::string move, CombatUnit* target);
-	std::string magicMenu(Room* currentRoom);
+	CombatUnit* selectTarget(Room* currentRoom);
+	void combatTurn(Room* currentRoom, int move, CombatUnit* target);
+	int magicMenu(Room* currentRoom);
 private:
 	Player * player_;
 	//Room* current_room_;

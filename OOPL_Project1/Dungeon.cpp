@@ -131,6 +131,9 @@ void Dungeon::enemyTable() {
 	Mimic* mickey = new Mimic("Mickey the Mimic");
 	Mimic* mickeyJr = new Mimic("Mickey Jr the Mimic");
 
+	// Clumsy Robot room 2
+	ClumsyRobot* clumsyRobot = new ClumsyRobot("Clumsy Robot");
+
 	// Chinchilla Chamber room 3
 	Chinchilla* charlie = new Chinchilla("Charlie the Chinchilla");
 	Chinchilla* chucky = new Chinchilla("Chucky the Chinchilla");
@@ -141,6 +144,6 @@ void Dungeon::enemyTable() {
 	// enemy table
 	enemies_ = { {},
 				{ mickey, mickeyJr },
-				{},
+				{clumsyRobot},
 				{charlie, chucky, chunky, chuckberry, steve} };
 }

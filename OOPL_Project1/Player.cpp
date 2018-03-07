@@ -2,50 +2,21 @@
 
 
 
-Player::Player(int health, int damage, std::string name) : CombatUnit(health, damage, name) {
-	this->mana_ = 100;
+Player::Player(int health, int damage, std::string name): CombatUnit(health, damage, mana_, name) {
 	setMana(true);
 }
 
 
-void Player::AddItemToInventory(Item* item) {
-	this->inventory_.push_back(item);
-}
-
-
-void Player::removeItemFromInventory(Item* item) {
-	for (int i = 0; i < inventory_.size(); i++) {
-		if (inventory_[i] == item) {
-			delete item;
-			inventory_.erase(inventory_.begin() + i);
-		}
+void Player::makeMove(int move, CombatUnit* target){
+	//CombatUnit::makeMove(move, target);
+	if (move == 1) {
+		DealDamage(target);
 	}
-}
-
-
-void Player::printInventory() {
-	if (inventory_.empty()) {
-		std::cout << "Inventory is empty!" << std::endl;
-	}
-	else {
-		for (int i = 0; i < inventory_.size(); i++) {
-			std::cout << i + 1 << ". ";
-			inventory_[i]->PrintData();
-		}
-		std::cout<<std::endl;
-	}
-}
-
-
-std::vector<Item*> Player::getInventory() {
-	return this->inventory_;
-}
-
-
-void Player::makeMove(std::string move, CombatUnit* target){
-	CombatUnit::makeMove(move, target);
-	if (move == "bolt") {
+	if (move == 2) {
 		boltMagic(target);
+	}
+	if (move == 9) {
+		std::cout << GetName()<<" used an item!" << std::endl;
 	}
 }
 
@@ -57,7 +28,7 @@ void Player::boltMagic(CombatUnit* target) {
 
 	// bolt logic
 	// maybe add if enemy is a robot do more damage?
-	if (mana_ >= 10) {
+	if (mana_ >= 50) {
 		std::cout << GetName() << " shoots a lightning bolt at " << target->GetName() << " for " << boltDamage << " damage!" << std::endl;
 		target->ModifyHealth(boltDamage);
 		ModifyMana(boltCost);

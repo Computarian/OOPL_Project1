@@ -2,7 +2,7 @@
 
 
 
-ManaPotion::ManaPotion() : Item("Energy Drink", "Restores 50 mana points to the target.") {
+ManaPotion::ManaPotion() : Item("Mountain Dew Voltage", "Restores 50 mana points to the target. Do the Dew!") {
 
 }
 

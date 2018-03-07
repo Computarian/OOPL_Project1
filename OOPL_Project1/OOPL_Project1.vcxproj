@@ -117,10 +117,12 @@
   <ItemGroup>
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Chinchilla.cpp" />
+    <ClCompile Include="ClumsyRobot.cpp" />
     <ClCompile Include="CombatUnit.cpp" />
     <ClCompile Include="Dungeon.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameWorld.cpp" />
+    <ClCompile Include="HamSandwich.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -128,21 +130,25 @@
     <ClCompile Include="MasterBall.cpp" />
     <ClCompile Include="Mimic.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Robot.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chest.hpp" />
     <ClInclude Include="Chinchilla.hpp" />
+    <ClInclude Include="ClumsyRobot.hpp" />
     <ClInclude Include="CombatUnit.hpp" />
     <ClInclude Include="Dungeon.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="GameWorld.hpp" />
+    <ClInclude Include="HamSandwich.hpp" />
     <ClInclude Include="HealthPotion.hpp" />
     <ClInclude Include="Item.hpp" />
     <ClInclude Include="ManaPotion.hpp" />
     <ClInclude Include="MasterBall.hpp" />
     <ClInclude Include="Mimic.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="Robot.hpp" />
     <ClInclude Include="Room.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

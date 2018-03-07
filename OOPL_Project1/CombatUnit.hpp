@@ -12,24 +12,38 @@ class Item;
 class CombatUnit {
 public:
 	CombatUnit(int health, int damage, std::string name);
+	// constructor for player/enemies with mana
+	CombatUnit(int health, int damage, int mana, std::string name);
+
+	int GetDefaultHealth();
 	int GetHealth();
 	int GetDamage();
 	std::string GetName();
-	void SetName(std::string newName);
 
-	void UseItem(Item* name, CombatUnit* target);
+	void UseItem(Item* item, CombatUnit* target);
+	void AddItemToInventory(Item* item);
+	void removeItemFromInventory(Item* item);
+	void printInventory();
+	std::vector<Item*> getInventory();
+
 	void ModifyHealth(int amount);
 	void ModifyMana(int amount);
 	void DealDamage(CombatUnit* target);
 	void PrintStats();
-	void setMana(bool mana);
-	void makeMove(std::string move, CombatUnit* target);
+
+	void setMana(bool mana);	
+
+	virtual void makeMove(int move, CombatUnit* target) = 0;
+	
 protected:
+	int default_health_;
 	int health;
 	int damage;
 	std::string name;
 	int mana_;
 	bool has_mana_;
+	std::vector<Item*> inventory_;
+
 };
 
-#endif
+#endif //COMBATUNIT_HPP

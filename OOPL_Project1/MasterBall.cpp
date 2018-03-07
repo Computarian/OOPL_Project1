@@ -10,8 +10,9 @@ MasterBall::MasterBall(): Item("Master Ball", "Use to capture any one enemy"){
 
 
 void MasterBall::Effect(CombatUnit* target) {
-	target->ModifyHealth(-(target->GetHealth()));
+	target->ModifyHealth(target->GetHealth());
 	this->captured_enemy_ = target;
+	viewCapturedEnemy();
 }
 
 

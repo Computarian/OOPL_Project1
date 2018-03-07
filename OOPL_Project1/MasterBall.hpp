@@ -9,7 +9,8 @@ public:
 	void Effect(CombatUnit* target);
 	void viewCapturedEnemy();
 private:
-	CombatUnit* captured_enemy_;
+	CombatUnit * captured_enemy_ = nullptr;
+	std::string description_;
 };
 
 #endif //MASTERBALL_HPP

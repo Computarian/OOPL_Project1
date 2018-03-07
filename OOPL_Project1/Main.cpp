@@ -1,7 +1,9 @@
 #include <iostream>
 #include "GameWorld.hpp"
+#include <time.h>
 
 int main() {
+	srand(time(NULL));
 	std::string input;
 
 	std::cout << "Hello Adventurer!" << std::endl;

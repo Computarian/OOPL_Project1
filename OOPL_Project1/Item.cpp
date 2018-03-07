@@ -21,5 +21,5 @@ void Item::SetDescription(std::string description) {
 
 
 void Item::PrintData() {
-	std::cout << GetName()<< "\t" << GetDescription() << std::endl;
+	std::cout << GetName()<< ": " << GetDescription() << std::endl;
 }

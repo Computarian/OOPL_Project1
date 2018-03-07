@@ -9,14 +9,10 @@
 class Player : public CombatUnit {
 public:
 	Player(int health, int damage, std::string name);
-	void AddItemToInventory(Item* item);
-	void removeItemFromInventory(Item* item);
-	void printInventory();
-	std::vector<Item*> getInventory();
-	void makeMove(std::string move, CombatUnit* target);
+	void makeMove(int move, CombatUnit* target);
 	void boltMagic(CombatUnit* target);
 private:
-	std::vector<Item*> inventory_;
+	const static int mana_ = 100;
 };
 
-#endif
+#endif //PLAYER_HPP
