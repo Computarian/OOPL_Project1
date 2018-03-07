@@ -127,6 +127,9 @@ void Dungeon::chestTable() {
 
 void Dungeon::enemyTable() {
 	// enemies list 
+
+	// test rock battle room 0
+	LargeRock* bigrock = new LargeRock("The Large Rock");
 	// Mimic Test room 1
 	Mimic* mickey = new Mimic("Mickey the Mimic");
 	Mimic* mickeyJr = new Mimic("Mickey Jr the Mimic");
@@ -142,7 +145,7 @@ void Dungeon::enemyTable() {
 	Chinchilla* steve = new Chinchilla("Steve the Chinchilla");
 
 	// enemy table
-	enemies_ = { {},
+	enemies_ = { {bigrock},
 				{ mickey, mickeyJr },
 				{clumsyRobot},
 				{charlie, chucky, chunky, chuckberry, steve} };

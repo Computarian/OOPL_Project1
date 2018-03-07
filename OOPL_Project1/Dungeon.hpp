@@ -16,6 +16,7 @@
 #include "Mimic.hpp"
 #include "Chinchilla.hpp"
 #include "ClumsyRobot.hpp"
+#include "LargeRock.hpp"
 
 class Dungeon
 {

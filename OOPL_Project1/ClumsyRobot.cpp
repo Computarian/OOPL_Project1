@@ -36,8 +36,11 @@ void ClumsyRobot::makeMove(int move, CombatUnit* target) {
 	else if (move >= 70 && move < 75) {
 		sandwich();
 	}
-	else {
+	else if(move >= 75 && move < 85){
 		DealDamage(target);
+	}
+	else {
+		rocketPunch(target);
 	}
 }
 

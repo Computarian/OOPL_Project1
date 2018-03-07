@@ -125,12 +125,14 @@
     <ClCompile Include="HamSandwich.cpp" />
     <ClCompile Include="HealthPotion.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="LargeRock.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ManaPotion.cpp" />
     <ClCompile Include="MasterBall.cpp" />
     <ClCompile Include="Mimic.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Robot.cpp" />
+    <ClCompile Include="RobotArm.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -144,11 +146,13 @@
     <ClInclude Include="HamSandwich.hpp" />
     <ClInclude Include="HealthPotion.hpp" />
     <ClInclude Include="Item.hpp" />
+    <ClInclude Include="LargeRock.hpp" />
     <ClInclude Include="ManaPotion.hpp" />
     <ClInclude Include="MasterBall.hpp" />
     <ClInclude Include="Mimic.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Robot.hpp" />
+    <ClInclude Include="RobotArm.hpp" />
     <ClInclude Include="Room.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
