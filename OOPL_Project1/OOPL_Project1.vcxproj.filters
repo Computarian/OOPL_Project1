@@ -72,6 +72,12 @@
     <ClCompile Include="LargeRock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MasterBallCapture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cute.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWorld.hpp">
@@ -126,6 +132,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LargeRock.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterBallCapture.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cute.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

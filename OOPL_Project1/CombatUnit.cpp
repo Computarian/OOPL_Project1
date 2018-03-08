@@ -41,6 +41,10 @@ std::string CombatUnit::GetName() {
 
 // Inventory Management functions
 void CombatUnit::UseItem(Item* item, CombatUnit* target) {
+	if (item->GetName() == "Master Ball" && target == this) {
+		std::cout << "You throw the Master Ball at yourself,\nbut miss and it flies off into the disance!" << std::endl;
+		return;
+	}
 	std::cout << this->name << " uses " << item->GetName() << std::endl;
 	item->Effect(target);
 }
@@ -52,8 +56,7 @@ void CombatUnit::AddItemToInventory(Item* item) {
 
 
 void CombatUnit::removeItemFromInventory(Item* item) {
-	if (item->GetName() == "Master Ball") {
-		std::cout << "The Master Ball flies back to you!" << std::endl;
+	if (item->GetName() == "Master Ball (Captured Enemy)") {
 		return;
 	}
 	for (int i = 0; i < inventory_.size(); i++) {

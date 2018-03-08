@@ -16,6 +16,7 @@ int main() {
 
 		if (input == "1") {
 			GameWorld* newGame = new GameWorld();
+			std::cout << "Game Over!" << std::endl;
 		}
 	} while (input != "q");
 	//game settings done in main?

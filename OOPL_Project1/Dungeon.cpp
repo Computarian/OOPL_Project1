@@ -52,6 +52,7 @@ void Dungeon::generateDescriptions() {
 }
 
 
+// generate room items
 void Dungeon::generateItems() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
 		dungeon_[i]->addItems(items_[i]);
@@ -59,6 +60,7 @@ void Dungeon::generateItems() {
 }
 
 
+// generate room chests
 void Dungeon::generateChests() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
 		dungeon_[i]->addChests(chests_[i]);
@@ -66,6 +68,7 @@ void Dungeon::generateChests() {
 }
 
 
+// generate room enemies
 void Dungeon::generateEnemies() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
 		dungeon_[i]->addEnemies(enemies_[i]);
@@ -145,7 +148,7 @@ void Dungeon::enemyTable() {
 	Chinchilla* steve = new Chinchilla("Steve the Chinchilla");
 
 	// enemy table
-	enemies_ = { {bigrock},
+	enemies_ = { {},
 				{ mickey, mickeyJr },
 				{clumsyRobot},
 				{charlie, chucky, chunky, chuckberry, steve} };

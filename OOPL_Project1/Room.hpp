@@ -1,8 +1,6 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
-#define NUM_DOORS 4
-
 #include <string>
 #include <iostream>
 #include <vector>
@@ -10,8 +8,8 @@
 #include "Item.hpp"
 #include "Chest.hpp"
 
-class Room
-{
+class Room {
+
 public:
 	Room();
 	// Room constructors, construct room based off type, all rooms have pointers to N,S,E,W, descriptions
@@ -34,6 +32,9 @@ public:
 
 	bool hasEnemies();
 	Enemy* targetEnemy(Enemy* enemy);
+
+	void printItems();
+	void printChests();
 
 	Room* getNorth();
 	Room* getSouth();

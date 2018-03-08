@@ -20,6 +20,7 @@ void Mimic::makeMove(int move, CombatUnit* target) {
 void Mimic::shootCan(CombatUnit* target) {
 	ManaPotion* shootCan = new ManaPotion();
 	std::cout << GetName() << " fires a " << shootCan->GetName() << " at " << target->GetName() << " for " << shoot_can_damage_ << " damage!" << std::endl;
+	target->ModifyHealth(shoot_can_damage_);
 	target->AddItemToInventory(shootCan);
 	std::cout << target->GetName() << " retrieved a " << shootCan->GetName() << "!" << std::endl;
 }

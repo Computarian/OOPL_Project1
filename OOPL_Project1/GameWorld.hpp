@@ -17,6 +17,7 @@ public:
 	CombatUnit* selectTarget(Room* currentRoom);
 	void combatTurn(Room* currentRoom, int move, CombatUnit* target);
 	int magicMenu(Room* currentRoom);
+	Item* combatInventory(Room* currentRoom);
 private:
 	Player * player_;
 	//Room* current_room_;
@@ -24,7 +25,11 @@ private:
 	// combat bool so player can only use one item per turn in combat (maybe something else)
 	// once player commits to turn, then combat turns go through?
 	bool take_turn;
-	bool gameover_; //when player health is < 1
+	// moves
+	int use_attack_ = 1;
+	int use_bolt_magic_ = 2;
+	int use_scan_ = 8;
+	int use_item_ = 9;
 };
 
 #endif //GAMEWORLD_HPP

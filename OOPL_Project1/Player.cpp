@@ -15,8 +15,11 @@ void Player::makeMove(int move, CombatUnit* target){
 	if (move == 2) {
 		boltMagic(target);
 	}
+	if (move == 8) {
+		std::cout << GetName() << " scanned the enemies stats!" << std::endl;
+	}
 	if (move == 9) {
-		std::cout << GetName()<<" used an item!" << std::endl;
+		std::cout << GetName()<<" used an item, and must wait their turn again!" << std::endl;
 	}
 }
 

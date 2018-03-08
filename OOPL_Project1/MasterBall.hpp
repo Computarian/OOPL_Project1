@@ -2,15 +2,12 @@
 #define MASTERBALL_HPP
 
 #include "Item.hpp"
+#include "MasterBallCapture.hpp"
 
 class MasterBall : public Item {
 public:
 	MasterBall();
 	void Effect(CombatUnit* target);
-	void viewCapturedEnemy();
-private:
-	CombatUnit * captured_enemy_ = nullptr;
-	std::string description_;
 };
 
 #endif //MASTERBALL_HPP

@@ -8,6 +8,11 @@ ClumsyRobot::ClumsyRobot(std::string name): Robot(ClumsyRobot::defaultHealth, Cl
 }
 
 
+ClumsyRobot::~ClumsyRobot() {
+	std::cout << GetName() << " relays a sad tale of it's origins" << std::endl;
+}
+
+
 void ClumsyRobot::makeMove(int move, CombatUnit* target) {
 	if (move < 10) {
 		bandage();

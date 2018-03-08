@@ -1,15 +1,14 @@
 #ifndef CHINCHILLA_HPP
 #define CHINCHILLA_HPP
 
-#include "Enemy.hpp"
+#include "Cute.hpp"
 
-class Chinchilla : public Enemy {
+class Chinchilla : public Cute {
 
 public:
 	Chinchilla(std::string name);
 	void makeMove(int move, CombatUnit* target);
 	void bite(CombatUnit* target);
-	void cute(CombatUnit* target);
 
 private:
 	const static int defaultHealth = 10;

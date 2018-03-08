@@ -108,6 +108,24 @@ Enemy* Room::targetEnemy(Enemy * enemy) {
 }
 
 
+void Room::printItems() {
+	for (int i = 0; i < items_.size(); i++) {
+		std::cout << i + 1 << ". ";
+		items_[i]->PrintData();
+	}
+	std::cout << std::endl;
+}
+
+
+void Room::printChests() {
+	for (int i = 0; i < chests_.size(); i++) {
+		std::cout << i + 1 << ". ";
+		std::cout << chests_[i]->getName() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+
 Room* Room::getNorth() {
 	return this->north_;
 }
