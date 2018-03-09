@@ -4,3 +4,8 @@ Enemy::Enemy(int health, int damage, std::string name) : CombatUnit(health, dama
 	//std::cout << "Enemy health: " << this->health<< " Enemy damage: " << this->damage << std::endl;
 	this->has_mana_ = false;
 }
+
+
+Enemy::~Enemy() {
+
+}

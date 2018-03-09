@@ -19,6 +19,11 @@ CombatUnit::CombatUnit(int health, int damage, int mana, std::string name) {
 }
 
 
+CombatUnit::~CombatUnit() {
+
+}
+
+
 int CombatUnit::GetDefaultHealth() {
 	return this->default_health_;
 }

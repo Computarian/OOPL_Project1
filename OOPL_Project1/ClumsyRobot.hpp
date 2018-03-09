@@ -4,6 +4,8 @@
 #include "Robot.hpp"
 #include "HamSandwich.hpp"
 
+
+// Earthbound's Clumsy Robot enemy
 class ClumsyRobot : public Robot{
 
 public:
@@ -21,7 +23,7 @@ public:
 	void sandwich();
 
 private:
-	const static int defaultHealth = 8;
+	const static int defaultHealth = 800;
 	const static int defaultDamage = 1;
 	const static int missile_damage_ = 300;
 	const static int beam_damage_ = 10;

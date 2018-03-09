@@ -5,6 +5,7 @@
 class Cute : public Enemy {
 public:
 	Cute(int health, int damage, std::string name);
+	virtual ~Cute();
 	void play(CombatUnit* target);
 	void pet(CombatUnit* target);
 };

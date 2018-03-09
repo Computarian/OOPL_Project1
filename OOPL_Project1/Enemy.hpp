@@ -8,6 +8,7 @@
 class Enemy : public CombatUnit {
 public:
 	Enemy(int health, int damage, std::string name);
+	virtual ~Enemy();
 };
 
 #endif

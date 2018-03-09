@@ -5,9 +5,10 @@
 class LargeRock: public Enemy{
 public:
 	LargeRock(std::string name);
+	~LargeRock();
 	void makeMove(int move, CombatUnit* target);
 private:
-	const static int defaulthealth = 10000;
+	const static int defaulthealth = 1000;
 	const static int defaultDamage = 0;
 	int punch_rock_damage_ = 25;
 	int self_destruct_damage_ = 50;

@@ -7,6 +7,11 @@ Robot::Robot(int health, int damage, std::string name) : Enemy(health, damage, n
 }
 
 
+Robot::~Robot() {
+
+}
+
+
 void Robot::rocketPunch(CombatUnit* target) {
 	std::cout << GetName() << " rocket punches " << target->GetName() << " in the face!!" << std::endl;
 	std::cout << rocket_punch_damage_ << " damage to " << target->GetName() << "!" << std::endl;
@@ -15,3 +20,5 @@ void Robot::rocketPunch(CombatUnit* target) {
 	target->AddItemToInventory(robotArm);
 	std::cout << target->GetName() << " retrieved a " << robotArm->GetName() << "!" << std::endl;
 }
+
+

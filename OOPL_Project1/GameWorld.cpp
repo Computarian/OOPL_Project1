@@ -333,6 +333,10 @@ void GameWorld::combatTurn(Room* currentRoom, int move, CombatUnit* target) {
 			//end game from combat somehow
 			break;
 		}
+		if (currentRoom->getEnemies()[i]->GetHealth() < 1) {
+			std::cout << currentRoom->getEnemies()[i]->GetName() << " was defeated!" << std::endl;
+			currentRoom->removeEnemy(currentRoom->getEnemies()[i]);
+		}
 	}
 }
 
@@ -343,11 +347,15 @@ int GameWorld::magicMenu(Room* currentRoom) {
 	do {
 		input = "";
 		std::cout << "1. Lightning Bolt!" << std::endl;
+		std::cout << "2. Cure" << std::endl;
 		std::cout << "q. Exit Magic Menu" << std::endl;
 		getline(std::cin, input);
 
 		if (input == "1") {
 			return use_bolt_magic_;
+		}
+		if (input == "2") {
+			return use_cure_magic_;
 		}
 	} while (input != "q");
 	return 0;

@@ -7,6 +7,11 @@ Cute::Cute(int health, int damage, std::string name) : Enemy(health, damage, nam
 }
 
 
+Cute::~Cute() {
+
+}
+
+
 void Cute::play(CombatUnit* target) {
 	std::cout << GetName() << " plays with " << target->GetName() << "!" << std::endl;
 }

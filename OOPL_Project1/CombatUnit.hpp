@@ -14,7 +14,7 @@ public:
 	CombatUnit(int health, int damage, std::string name);
 	// constructor for player/enemies with mana
 	CombatUnit(int health, int damage, int mana, std::string name);
-
+	virtual ~CombatUnit();
 	int GetDefaultHealth();
 	int GetHealth();
 	int GetDamage();

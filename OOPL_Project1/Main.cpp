@@ -16,6 +16,7 @@ int main() {
 
 		if (input == "1") {
 			GameWorld* newGame = new GameWorld();
+			delete newGame;
 			std::cout << "Game Over!" << std::endl;
 		}
 	} while (input != "q");

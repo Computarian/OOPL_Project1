@@ -22,12 +22,10 @@ private:
 	Player * player_;
 	//Room* current_room_;
 	Room* prev_room_;
-	// combat bool so player can only use one item per turn in combat (maybe something else)
-	// once player commits to turn, then combat turns go through?
-	bool take_turn;
 	// moves
 	int use_attack_ = 1;
 	int use_bolt_magic_ = 2;
+	int use_cure_magic_ = 3;
 	int use_scan_ = 8;
 	int use_item_ = 9;
 };

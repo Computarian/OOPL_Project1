@@ -6,6 +6,11 @@ Mimic::Mimic(std::string name): Enemy(Mimic::defaultHealth, Mimic::defaultDamage
 }
 
 
+Mimic::~Mimic() {
+
+}
+
+
 void Mimic::makeMove(int move, CombatUnit* target) {
 	//CombatUnit::makeMove(move, target);
 	if (move < 50) {

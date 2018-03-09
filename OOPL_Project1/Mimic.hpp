@@ -3,11 +3,11 @@
 
 #include "Enemy.hpp"
 #include "ManaPotion.hpp"
-#include "Player.hpp"
 
 class Mimic: public Enemy {
 public:
 	Mimic(std::string name);
+	~Mimic();
 	void makeMove(int move, CombatUnit* target);
 	void shootCan(CombatUnit* target);
 private:

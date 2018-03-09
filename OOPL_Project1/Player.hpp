@@ -9,10 +9,18 @@
 class Player : public CombatUnit {
 public:
 	Player(int health, int damage, std::string name);
+	~Player();
 	void makeMove(int move, CombatUnit* target);
 	void boltMagic(CombatUnit* target);
+	void cureMagic(CombatUnit* target);
 private:
 	const static int mana_ = 100;
+	// bolt spell stats
+	int bolt_cost_ = 50;
+	int bolt_damage_ = 125;
+	int cure_cost_ = 25;
+	int cure_heal_ = 100;
+
 };
 
 #endif //PLAYER_HPP

@@ -27,6 +27,8 @@ Room* Dungeon::getStartRoom() {
 std::vector<Room*> Dungeon::getDungeon() {
 	return this->dungeon_;
 }
+
+
 // generate rooms in the dungeon
 void Dungeon::generateRooms() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
@@ -133,12 +135,14 @@ void Dungeon::enemyTable() {
 
 	// test rock battle room 0
 	LargeRock* bigrock = new LargeRock("The Large Rock");
+
 	// Mimic Test room 1
 	Mimic* mickey = new Mimic("Mickey the Mimic");
 	Mimic* mickeyJr = new Mimic("Mickey Jr the Mimic");
-
+	Bulbasaur* bulby = new Bulbasaur("Bulbasaur");
 	// Clumsy Robot room 2
 	ClumsyRobot* clumsyRobot = new ClumsyRobot("Clumsy Robot");
+	NAO* naoRobot = new NAO("Chappie");
 
 	// Chinchilla Chamber room 3
 	Chinchilla* charlie = new Chinchilla("Charlie the Chinchilla");
@@ -149,7 +153,7 @@ void Dungeon::enemyTable() {
 
 	// enemy table
 	enemies_ = { {},
-				{ mickey, mickeyJr },
-				{clumsyRobot},
-				{charlie, chucky, chunky, chuckberry, steve} };
+				{ mickey, mickeyJr, bulby},
+				{clumsyRobot, naoRobot},
+				{charlie, chucky, chunky, chuckberry, steve, bigrock} };
 }

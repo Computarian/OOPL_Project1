@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Chinchilla.cpp" />
     <ClCompile Include="ClumsyRobot.cpp" />
@@ -132,12 +133,14 @@
     <ClCompile Include="MasterBall.cpp" />
     <ClCompile Include="MasterBallCapture.cpp" />
     <ClCompile Include="Mimic.cpp" />
+    <ClCompile Include="NAO.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="RobotArm.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bulbasaur.hpp" />
     <ClInclude Include="Chest.hpp" />
     <ClInclude Include="Chinchilla.hpp" />
     <ClInclude Include="ClumsyRobot.hpp" />
@@ -154,6 +157,7 @@
     <ClInclude Include="MasterBall.hpp" />
     <ClInclude Include="MasterBallCapture.hpp" />
     <ClInclude Include="Mimic.hpp" />
+    <ClInclude Include="NAO.hpp" />
     <ClInclude Include="Player.hpp" />
     <ClInclude Include="Robot.hpp" />
     <ClInclude Include="RobotArm.hpp" />

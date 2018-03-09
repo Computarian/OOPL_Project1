@@ -2,12 +2,12 @@
 
 
 
-HealthPotion::HealthPotion() : Item("Cookie", "Restores 5hp to the target.") {
+HealthPotion::HealthPotion() : Item("Energy Drink", "Restores 50 hp to the target.") {
 
 }
 
 
 void HealthPotion::Effect(CombatUnit* target) {
-	target->ModifyHealth(-5);
+	target->ModifyHealth(-(health_potion_heal_));
 }
 

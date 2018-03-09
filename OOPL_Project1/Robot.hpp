@@ -8,6 +8,7 @@ class Robot : public Enemy{
 
 public:
 	Robot(int health, int damage, std::string name);
+	virtual ~Robot();
 	void rocketPunch(CombatUnit* target);
 protected:
 	int rocket_punch_damage_ = 25;

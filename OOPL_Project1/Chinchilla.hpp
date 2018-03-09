@@ -7,6 +7,7 @@ class Chinchilla : public Cute {
 
 public:
 	Chinchilla(std::string name);
+	~Chinchilla();
 	void makeMove(int move, CombatUnit* target);
 	void bite(CombatUnit* target);
 

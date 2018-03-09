@@ -17,6 +17,8 @@
 #include "Chinchilla.hpp"
 #include "ClumsyRobot.hpp"
 #include "LargeRock.hpp"
+#include "NAO.hpp"
+#include "Bulbasaur.hpp"
 
 class Dungeon
 {
