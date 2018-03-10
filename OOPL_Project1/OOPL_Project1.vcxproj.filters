@@ -84,6 +84,12 @@
     <ClCompile Include="Bulbasaur.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BitCoin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameWorld.hpp">
@@ -150,6 +156,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Bulbasaur.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BitCoin.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Troll.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

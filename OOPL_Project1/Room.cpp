@@ -7,6 +7,7 @@ Room::Room(){
 	this->south_ = nullptr;
 	this->east_ = nullptr;
 	this->west_ = nullptr;
+	this->story_ = "";
 }
 
 
@@ -90,6 +91,22 @@ void Room::removeEnemy(CombatUnit* enemy) {
 }
 
 
+void Room::setStory(std::string story) {
+	story_ = story;
+}
+
+
+bool Room::hasStory() {
+	if (story_ == "") {
+		return false;
+	}
+	return true;
+}
+
+
+std::string Room::getStory() {
+	return story_;
+}
 bool Room::hasEnemies() {
 	if (enemies_.empty()) {
 		return false;

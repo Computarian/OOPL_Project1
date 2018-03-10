@@ -30,6 +30,10 @@ public:
 	std::vector<Enemy*> getEnemies();
 	void removeEnemy(CombatUnit* enemy);
 
+	void setStory(std::string story);
+	bool hasStory();
+	std::string getStory();
+
 	bool hasEnemies();
 	Enemy* targetEnemy(Enemy* enemy);
 
@@ -50,6 +54,7 @@ private:
 	Room* south_;
 	Room* east_;
 	Room* west_;
+	std::string story_;
 	
 };
 

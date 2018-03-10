@@ -10,17 +10,21 @@ class GameWorld
 {
 public:
 	GameWorld();
-	void displayMenu(Room* currentRoom);
-	void openInventory(Room* currentRoom);
+	void displayMenu();
+	void openInventory();
 	
-	void combatMenu(Room* currentRoom);
-	CombatUnit* selectTarget(Room* currentRoom);
-	void combatTurn(Room* currentRoom, int move, CombatUnit* target);
-	int magicMenu(Room* currentRoom);
-	Item* combatInventory(Room* currentRoom);
+	void combatMenu();
+	CombatUnit* selectTarget();
+	void combatTurn( int move, CombatUnit* target);
+	int magicMenu();
+	Item* combatInventory();
+
+	// have this be based off different conditions
+	void gameEndings(std::string ending);
 private:
 	Player * player_;
-	//Room* current_room_;
+	Dungeon* new_dungeon_;
+	Room* currentRoom;
 	Room* prev_room_;
 	// moves
 	int use_attack_ = 1;
@@ -28,6 +32,7 @@ private:
 	int use_cure_magic_ = 3;
 	int use_scan_ = 8;
 	int use_item_ = 9;
+	bool game_over_;
 };
 
 #endif //GAMEWORLD_HPP

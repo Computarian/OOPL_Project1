@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BitCoin.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Chinchilla.cpp" />
@@ -138,8 +139,10 @@
     <ClCompile Include="Robot.cpp" />
     <ClCompile Include="RobotArm.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitCoin.hpp" />
     <ClInclude Include="Bulbasaur.hpp" />
     <ClInclude Include="Chest.hpp" />
     <ClInclude Include="Chinchilla.hpp" />
@@ -162,6 +165,7 @@
     <ClInclude Include="Robot.hpp" />
     <ClInclude Include="RobotArm.hpp" />
     <ClInclude Include="Room.hpp" />
+    <ClInclude Include="Troll.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

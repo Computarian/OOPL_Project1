@@ -10,17 +10,27 @@ Dungeon::Dungeon(){
 	itemTable();
 	chestTable();
 	enemyTable();
+	storyTable();
 
 	generateDoors();
 	generateDescriptions();
 	generateItems();
 	generateChests();
 	generateEnemies();
+	generateStory();
 }
 
 
 Room* Dungeon::getStartRoom() {
 	return this->dungeon_[0];
+}
+
+
+bool Dungeon::endRoom(Room* currentRoom) {
+	if (currentRoom == dungeon_[19]) {
+		return true;
+	}
+	return false;
 }
 
 
@@ -78,21 +88,113 @@ void Dungeon::generateEnemies() {
 }
 
 
+void Dungeon::generateStory() {
+	for (int i = 0; i < DUNGEON_SIZE; i++) {
+		dungeon_[i]->setStory(story_[i]);
+	}
+}
 // room doors to other rooms: {NORTH, SOUTH, EAST, WEST}
 void Dungeon::doorTable() {
-	doors_ = { { dungeon_[1], nullptr, dungeon_[2], dungeon_[3] },
-				{ nullptr, dungeon_[0], nullptr, nullptr },
-				{nullptr, nullptr, nullptr, dungeon_[0]},
-				{nullptr, nullptr, dungeon_[0], nullptr}};
+	doors_ = { { nullptr, nullptr, dungeon_[1], dungeon_[2] }, //Room 0: Start Room
+				{ nullptr, nullptr, nullptr, dungeon_[0] }, //Room 1
+				{ dungeon_[3], nullptr, dungeon_[0], nullptr }, //Room 2
+				{ dungeon_[5], dungeon_[2], nullptr, dungeon_[4]}, //Room 3
+				{ nullptr, nullptr, dungeon_[3], nullptr}, //Room 4
+				{ nullptr, dungeon_[3], dungeon_[6], nullptr }, //Room 5
+				{ dungeon_[8], nullptr, dungeon_[7], dungeon_[5] }, //Room 6
+				{ nullptr, nullptr, nullptr, dungeon_[6] }, //Room 7: Bulbasaur Room
+				{ dungeon_[9], dungeon_[6], nullptr, nullptr }, //Room 8
+				{ nullptr, dungeon_[8], dungeon_[17], dungeon_[10] }, //Room 9
+				{ dungeon_[11], nullptr, dungeon_[9], nullptr }, //Room 10
+				{ dungeon_[12], dungeon_[10], nullptr, nullptr }, //Room 11: NAO Robot Boss
+				{ nullptr, dungeon_[11], dungeon_[13], nullptr }, //Room 12
+				{ dungeon_[18], nullptr, dungeon_[14], dungeon_[12] }, //Room 13
+				{ nullptr, dungeon_[15], nullptr, dungeon_[13]}, //Room 14
+				{ dungeon_[14], dungeon_[17], dungeon_[16], nullptr }, //Room 15: Clumsy Robot Boss
+				{ nullptr, nullptr, nullptr, dungeon_[15] }, //Room 16: Chinchilla Chamber
+				{ dungeon_[15], nullptr, nullptr, dungeon_[9] }, //Room 17
+				{ dungeon_[19], dungeon_[13], nullptr, nullptr }, //Room 18: Final Boss Room
+				{ nullptr, dungeon_[18], nullptr, nullptr } }; //Room 19: Goal Room
 }
 
 
 // room descriptions
 void Dungeon::descriptionTable() {
-	descriptions_ = { "It's the start room!" ,
-		"It's the Mimics' room!",
-		"It's the test item room!",
-		"\nOn the ground lay five dead Chinchillas,\nyou monster\n"};
+	descriptions_ = {
+		//Room 0
+		"--Seaside--\n"
+		"North of you up a mountain is the Castle,\n"
+		" the cliffs are too steep to climb however, \n"
+		"South lies \"The Sea\", your submarine is currently docked nearby.\n"
+		"to the East lies the ruined City.\n"
+		"to the West is a path leading to the abandoned Bitcoin Mine\n",
+		//Room 1
+		"--Ruined City--\n"
+		"There is far too much rubble in the city, and you can't continue any further.\n"
+		"The path west seems like a more promising way to the Castle\n",
+		//Room 2
+		"--Snowy Field--\n"
+		"The entrance to the Bitcoin Mine lies to the north.\n"
+		"A sign nearby says \"Don't feed the Trolls\"\n",
+		//Room 3
+		"--Bitcoin Mines: Ground Level--\n"
+		"To the north leads deeper into the mines.\n"
+		"To the west is the Break Room.\n",
+		//Room 4
+		"--Mines: Break Room--\n"
+		"The Break Room, several Vending Machines are in here.\n",
+		//Room 5
+		"--Bitcoin Mines: Upper Level--\n"
+		"The Funicular is to the East.\n",
+		//Room 6
+		"--Castle Gates--\n"
+		"The gates to the castle lie open to the north.\n"
+		"To the east is the Data Furnace.\n",
+		//Room 7
+		"--Data Furnace--\n"
+		"The furnace lies dormant,\n"
+		"the frozen Palm Trees nearby indicate this area used to be much warmer.\n",
+		//Room 8
+		"--Courtyard--\n"
+		"To the north lies the entrance into the Castle.\n",
+		//Room 9
+		"--Grand Entrance--\n"
+		"East Wing: Overly cutesy robot sounds can be heard coming from the halls to the east.\n"
+		"West Wing: The west is quiet... almost too quiet...\n",
+		//Room 10
+		"--Kitchen--\n"
+		"North lies the Museum.\n",
+		//Room 11
+		"--Museum--\n"
+		"North lies the Conservatory.\n",
+		//Room 12
+		"--Conservatory--\n"
+		"To the east is the Grand Hall. The treasure is near..\n",
+		//Room 13
+		"--Grand Hall--\n"
+		"To the north is the Throne Room, prepare for the final battle!\n"
+		"The East and West Wings meet here in the Grand Hall.\n",
+		//Room 14
+		"--Royal Chambers--\n"
+		"To the west is the Grand Hall. The treasure is near..\n",
+		//Room 15
+		"--Block Chainber--\n"
+		"To the north lie the Royal Chambers.\n"
+		"To the east is an unknown room,\n"
+		"a nearby sign has unreadable letters due to claw marks.\n",
+		//Room 16
+		"--Petting Zoo--\n"
+		"On the ground lay five dead Chinchillas,\nyou monster\n",
+		//Room 17
+		"--Lab--\n"
+		"North leads to the Block Chainber.\n",
+		//Room 18
+		"--Throne Room--\n"
+		"North in a secret passage is an elevator leading down to the Vault!\n",
+		//Room 19
+		"--The Vault--\n"
+		"You did it!\n"
+	};
 
 }
 
@@ -104,7 +206,23 @@ void Dungeon::itemTable() {
 	// items table
 	items_ = { {},
 				{},
-				{healPotion1},
+				{},
+				{},
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
+				{}, 
 				{} };
 }
 
@@ -124,8 +242,24 @@ void Dungeon::chestTable() {
 	mimicChest->setChestEnemy(mickeySr);
 
 	chests_ = { {},
-				{mimicChest},
-				{firstChest},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
 				{} };
 }
 
@@ -142,7 +276,7 @@ void Dungeon::enemyTable() {
 	Bulbasaur* bulby = new Bulbasaur("Bulbasaur");
 	// Clumsy Robot room 2
 	ClumsyRobot* clumsyRobot = new ClumsyRobot("Clumsy Robot");
-	NAO* naoRobot = new NAO("Chappie");
+	NAO* naoRobot = new NAO("Chappie, COMP 460 Project");
 
 	// Chinchilla Chamber room 3
 	Chinchilla* charlie = new Chinchilla("Charlie the Chinchilla");
@@ -153,7 +287,48 @@ void Dungeon::enemyTable() {
 
 	// enemy table
 	enemies_ = { {},
-				{ mickey, mickeyJr, bulby},
-				{clumsyRobot, naoRobot},
-				{charlie, chucky, chunky, chuckberry, steve, bigrock} };
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{} };
+}
+
+
+void Dungeon::storyTable() {
+	story_ = { {"You have finally arrived at the mysterious estate,\n"
+				"the tales of D. Ragon's Bitcoin Horde lead here,\nyou begin your search..\n\n"},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{},
+				{} };
 }
