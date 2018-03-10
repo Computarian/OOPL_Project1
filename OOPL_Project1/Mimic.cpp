@@ -16,8 +16,11 @@ void Mimic::makeMove(int move, CombatUnit* target) {
 	if (move < 50) {
 		DealDamage(target);
 	}
-	if (move >= 51) {
+	if (move >= 51 && move < 90) {
 		shootCan(target);
+	}
+	else {
+		chomp(target);
 	}
 }
 
@@ -30,3 +33,8 @@ void Mimic::shootCan(CombatUnit* target) {
 	std::cout << target->GetName() << " retrieved a " << shootCan->GetName() << "!" << std::endl;
 }
 
+
+void Mimic::chomp(CombatUnit* target) {
+	std::cout << GetName() << " shrieks and then chomps on " << target->GetName() << " for " << chomp_damage_ << " damage!" << std::endl;
+	target->ModifyHealth(chomp_damage_);
+}

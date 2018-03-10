@@ -23,11 +23,10 @@ public:
 	void sandwich();
 
 private:
-	const static int defaultHealth = 800;
+	const static int defaultHealth = 2000;
 	const static int defaultDamage = 1;
 	const static int missile_damage_ = 300;
-	const static int beam_damage_ = 10;
-	//std::vector<HamSandwich*> lunch_bag_;
+	const static int beam_damage_ = 50;
 };
 
 #endif //CLUMSYROBOT_HPP

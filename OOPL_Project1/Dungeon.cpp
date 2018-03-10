@@ -96,25 +96,25 @@ void Dungeon::generateStory() {
 // room doors to other rooms: {NORTH, SOUTH, EAST, WEST}
 void Dungeon::doorTable() {
 	doors_ = { { nullptr, nullptr, dungeon_[1], dungeon_[2] }, //Room 0: Start Room
-				{ nullptr, nullptr, nullptr, dungeon_[0] }, //Room 1
-				{ dungeon_[3], nullptr, dungeon_[0], nullptr }, //Room 2
-				{ dungeon_[5], dungeon_[2], nullptr, dungeon_[4]}, //Room 3
-				{ nullptr, nullptr, dungeon_[3], nullptr}, //Room 4
-				{ nullptr, dungeon_[3], dungeon_[6], nullptr }, //Room 5
-				{ dungeon_[8], nullptr, dungeon_[7], dungeon_[5] }, //Room 6
-				{ nullptr, nullptr, nullptr, dungeon_[6] }, //Room 7: Bulbasaur Room
-				{ dungeon_[9], dungeon_[6], nullptr, nullptr }, //Room 8
-				{ nullptr, dungeon_[8], dungeon_[17], dungeon_[10] }, //Room 9
-				{ dungeon_[11], nullptr, dungeon_[9], nullptr }, //Room 10
-				{ dungeon_[12], dungeon_[10], nullptr, nullptr }, //Room 11: NAO Robot Boss
-				{ nullptr, dungeon_[11], dungeon_[13], nullptr }, //Room 12
-				{ dungeon_[18], nullptr, dungeon_[14], dungeon_[12] }, //Room 13
-				{ nullptr, dungeon_[15], nullptr, dungeon_[13]}, //Room 14
-				{ dungeon_[14], dungeon_[17], dungeon_[16], nullptr }, //Room 15: Clumsy Robot Boss
-				{ nullptr, nullptr, nullptr, dungeon_[15] }, //Room 16: Chinchilla Chamber
-				{ dungeon_[15], nullptr, nullptr, dungeon_[9] }, //Room 17
-				{ dungeon_[19], dungeon_[13], nullptr, nullptr }, //Room 18: Final Boss Room
-				{ nullptr, dungeon_[18], nullptr, nullptr } }; //Room 19: Goal Room
+		{ nullptr, nullptr, nullptr, dungeon_[0] }, //Room 1
+		{ dungeon_[3], nullptr, dungeon_[0], nullptr }, //Room 2
+		{ dungeon_[5], dungeon_[2], nullptr, dungeon_[4]}, //Room 3
+		{ nullptr, nullptr, dungeon_[3], nullptr}, //Room 4
+		{ nullptr, dungeon_[3], dungeon_[6], nullptr }, //Room 5
+		{ dungeon_[8], nullptr, dungeon_[7], dungeon_[5] }, //Room 6
+		{ nullptr, nullptr, nullptr, dungeon_[6] }, //Room 7: Bulbasaur Room
+		{ dungeon_[9], dungeon_[6], nullptr, nullptr }, //Room 8
+		{ nullptr, dungeon_[8], dungeon_[17], dungeon_[10] }, //Room 9
+		{ dungeon_[11], nullptr, dungeon_[9], nullptr }, //Room 10
+		{ dungeon_[12], dungeon_[10], nullptr, nullptr }, //Room 11: NAO Robot Boss
+		{ nullptr, dungeon_[11], dungeon_[13], nullptr }, //Room 12
+		{ dungeon_[18], nullptr, dungeon_[14], dungeon_[12] }, //Room 13
+		{ nullptr, dungeon_[15], nullptr, dungeon_[13]}, //Room 14
+		{ dungeon_[14], dungeon_[17], dungeon_[16], nullptr }, //Room 15: Clumsy Robot Boss
+		{ nullptr, nullptr, nullptr, dungeon_[15] }, //Room 16: Chinchilla Chamber
+		{ dungeon_[15], nullptr, nullptr, dungeon_[9] }, //Room 17
+		{ dungeon_[19], dungeon_[13], nullptr, nullptr }, //Room 18: Final Boss Room
+		{ nullptr, dungeon_[18], nullptr, nullptr } }; //Room 19: Goal Room
 }
 
 
@@ -124,7 +124,7 @@ void Dungeon::descriptionTable() {
 		//Room 0
 		"--Seaside--\n"
 		"North of you up a mountain is the Castle,\n"
-		" the cliffs are too steep to climb however, \n"
+		"the cliffs are too steep to climb however, \n"
 		"South lies \"The Sea\", your submarine is currently docked nearby.\n"
 		"to the East lies the ruined City.\n"
 		"to the West is a path leading to the abandoned Bitcoin Mine\n",
@@ -137,14 +137,14 @@ void Dungeon::descriptionTable() {
 		"The entrance to the Bitcoin Mine lies to the north.\n"
 		"A sign nearby says \"Don't feed the Trolls\"\n",
 		//Room 3
-		"--Bitcoin Mines: Ground Level--\n"
+		"--Bitcoin Mines: Level 1--\n"
 		"To the north leads deeper into the mines.\n"
 		"To the west is the Break Room.\n",
 		//Room 4
 		"--Mines: Break Room--\n"
 		"The Break Room, several Vending Machines are in here.\n",
 		//Room 5
-		"--Bitcoin Mines: Upper Level--\n"
+		"--Bitcoin Mines: Level 2--\n"
 		"The Funicular is to the East.\n",
 		//Room 6
 		"--Castle Gates--\n"
@@ -190,145 +190,148 @@ void Dungeon::descriptionTable() {
 		"North leads to the Block Chainber.\n",
 		//Room 18
 		"--Throne Room--\n"
-		"North in a secret passage is an elevator leading down to the Vault!\n",
+		"North is a secret passage is an elevator leading down to the Vault!\n",
 		//Room 19
 		"--The Vault--\n"
-		"You did it!\n"
-	};
-
+		"You did it!\n" };
 }
 
 
 void Dungeon::itemTable() {
-	// items list
-	HealthPotion* healPotion1 = new HealthPotion();
-
-	// items table
-	items_ = { {},
-				{},
-				{},
-				{},
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{}, 
-				{} };
+	items_ = { {new HealthPotion(), new HealthPotion()}, //Room 0
+		{new HealthPotion(), new HealthPotion(), new ManaPotion(), new ManaPotion()}, //Room 1
+		{}, //Room 2
+		{new BitCoin()}, //Room 3
+		{new BitCoin()}, //Room 4
+		{new BitCoin(), new BitCoin()}, //Room 5
+		{}, //Room 6
+		{new MasterBall()}, //Room 7
+		{}, //Room 8
+		{new RobotArm()}, //Room 9
+		{new HamSandwich(), new HealthPotion(), new ManaPotion()}, //Room 10
+		{}, //Room 11
+		{}, //Room 12
+		{new HamSandwich(), new RobotArm(), new RobotArm()}, //Room 13
+		{}, //Room 14
+		{}, //Room 15
+		{}, //Room 16
+		{new RobotArm()}, //Room 17
+		{}, //Room 18
+		{} };  //Room 19
 }
 
 
 void Dungeon::chestTable() {
-	//items for chests
-	std::vector<Item*> chest0 = { new HealthPotion(), new HealthPotion };
-	std::vector<Item*> vendingMimic = { new ManaPotion(), new ManaPotion(), new ManaPotion() , new ManaPotion() };
+	//mimic chests
+	Mimic* breakRoomMimic = new Mimic("Vending Machine Mimic");
+	Chest* breakRoomMimicChest = new Chest({ new ManaPotion(), new ManaPotion(), new ManaPotion() , new ManaPotion() }, "Strange Vending Machine");
+	breakRoomMimicChest->setChestEnemy(breakRoomMimic);
 
-	//mimic chest
-	Mimic* mickeySr = new Mimic("Vending Machine Mimic");
+	Mimic* fridgeMimic = new Mimic("Fridge Mimic: Fridgic");
+	Chest* fridgeMimicChest = new Chest({ new HamSandwich() }, "Ordinary Refrigerator");
+	fridgeMimicChest->setChestEnemy(fridgeMimic);
 
-	// chests list
-	Chest* firstChest = new Chest(chest0, "Old Chest");
+	Mimic* freezerMimic = new Mimic("Fritz the Freezer Mimic");
+	Chest* freezerMimicChest = new Chest({ new HealthPotion(), new ManaPotion(), new BitCoin() }, "CryptoCooler Freezer");
+	freezerMimicChest->setChestEnemy(freezerMimic);
 
-	Chest* mimicChest = new Chest(vendingMimic, "Strange Vending Machine");
-	mimicChest->setChestEnemy(mickeySr);
-
-	chests_ = { {},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{} };
+	chests_ = { {}, //Room 0
+		{ new Chest({ new HealthPotion(), new HealthPotion }, "Old Chest") }, //Room 1
+		{}, //Room 2
+		{}, //Room 3
+		{new Chest({new HealthPotion(), new HealthPotion(),new HealthPotion(),new HealthPotion()}, "CryptoCooler Vending Machine"),
+			breakRoomMimicChest}, //Room 4
+		{}, //Room 5
+		{}, //Room 6
+		{new Chest({new BitCoin(), new BitCoin()}, "Satoshi's Wallet")}, //Room 7
+		{}, //Room 8
+		{}, //Room 9
+		{fridgeMimicChest, freezerMimicChest}, //Room 10
+		{new Chest({new MasterBall()}, "Curator's Chest")}, //Room 11
+		{}, //Room 12
+		{new Chest({new HamSandwich(), new HamSandwich()}, "Discarded Lunch Box")}, //Room 13
+		{new Chest({new BitCoin()}, "Royal Wallet")}, //Room 14
+		{new Chest({new RobotArm(), new RobotArm()}, "Armoire")}, //Room 15
+		{}, //Room 16
+		{}, //Room 17
+		{}, //Room 18
+		{} }; //Room 19
 }
 
 
 void Dungeon::enemyTable() {
-	// enemies list 
-
-	// test rock battle room 0
-	LargeRock* bigrock = new LargeRock("The Large Rock");
-
-	// Mimic Test room 1
-	Mimic* mickey = new Mimic("Mickey the Mimic");
-	Mimic* mickeyJr = new Mimic("Mickey Jr the Mimic");
-	Bulbasaur* bulby = new Bulbasaur("Bulbasaur");
-	// Clumsy Robot room 2
-	ClumsyRobot* clumsyRobot = new ClumsyRobot("Clumsy Robot");
-	NAO* naoRobot = new NAO("Chappie, COMP 460 Project");
-
-	// Chinchilla Chamber room 3
-	Chinchilla* charlie = new Chinchilla("Charlie the Chinchilla");
-	Chinchilla* chucky = new Chinchilla("Chucky the Chinchilla");
-	Chinchilla* chunky = new Chinchilla("Chunky the Chinchilla");
-	Chinchilla* chuckberry = new Chinchilla("Chuck Berry the Chinchilla");
-	Chinchilla* steve = new Chinchilla("Steve the Chinchilla");
-
-	// enemy table
-	enemies_ = { {},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{} };
+	enemies_ = { {}, //Room 0
+		{new Chinchilla("Rad Chinchilla")}, //Room 1
+		{}, //Room 2
+		{new Troll("Larry the Troll")}, //Room 3
+		{new Troll("Troll on their break")}, //Room 4
+		{new Troll("Trololo the Troll"), new Troll( "|||||||| the Troll")}, //Room 5
+		{}, //Room 6
+		{new Bulbasaur("BULBASAUR")}, //Room 7
+		{}, //Room 8
+		{}, //Room 9
+		{}, //Room 10
+		{new LargeRock("The Large Rock")}, //Room 11
+		{new Bulbasaur("Bulbasaur")}, //Room 12
+		{new NAO("Chappie"), new NAO("Chappie's Good Friend")}, //Room 13
+		{}, //Room 14
+		{new NAO("NAO Grunt")}, //Room 15
+		{ new Chinchilla("Charlie the Chinchilla"), new Chinchilla("Chucky the Chinchilla"), new Chinchilla("Chunky the Chinchilla"),
+			new Chinchilla("Chuck Berry the Chinchilla"), new Chinchilla("Steve the Chinchilla") }, //Room 16
+		{new NAO("COMP 460 Project: NAO Robot")}, //Room 17
+		{new ClumsyRobot("Clumsy Robot")}, //Room 18
+		{} }; //Room 19
 }
 
 
 void Dungeon::storyTable() {
-	story_ = { {"You have finally arrived at the mysterious estate,\n"
-				"the tales of D. Ragon's Bitcoin Horde lead here,\nyou begin your search..\n\n"},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{},
-				{} };
+	story_ = { 
+		{"You have finally arrived at the Kingdom,\n"
+		"the tales of the D. Ragon's Lost Bitcoin Vault lead here,\nyou begin your search..\n\n"}, //Room 0
+		{"The once prosperous City has fallen to ruin...\n"}, //Room 1
+		{"You begin moving westward across the snow field,\n"
+			"numerous abandoned coin loaders lay strewn about.\n"
+			"You continue your journy following the snow covered tracks to the mine.\n"}, //Room 2
+		{"You thought the mines were abanoned, but a wild troll appears!\n"
+			"They have the ability to regen, but overall aren't too tough.\n"}, //Room 3
+		{"You enter the break room and a lone troll seems upset you interrupted them.\n"}, //Room 4
+		{"You see a pile of burnt out video cards and discarded fans in the corner.\n"
+			"Two trolls are seen scavenging for good parts.\n"}, //Room 5
+		{"After taking the Funicular and not having to fight anything oddly enough,\n"
+			"you reach the castle gates. Although to the east lies the Data Furnace,\n"
+			"which could contain some treasure...\n"}, //Room 6
+		{"The Data Furnace was used to heat the Kingdom during the Bitcoin Boom,\n"
+			"but eventually the mines began to run dry, draining the Kingdom's wealth and warmth.\n"}, //Room 7
+		{"Despite the Kingdom's fall during the Crypto Wars,\n"
+			"the Castle remains in fairly good condition."}, //Room 8
+		{"The interior of the Castle is quite grand and meticulously cleaned.\n"
+			"To the west is a Kitchen, and to the east is the Lab.\n"}, //Room 9
+		{"The Kitchen would probably be a good time to stock up the Inventory.\n"}, //Room 10
+		{"You try to enter the Museum, but blocking the way is a very large rock!\n"}, //Room 11
+		{"The Conservatory contains various flora native to the Kingdom,\n"
+			"before it became frozen over.\n"}, //Room 12
+		{"The Grand Hall leads to the Throne Room, but two NAO robots are guarding the way forward!"}, //Room 13
+		{"No one knows what happened to the royal family after the Kingdom fell.\n"
+			"*A notification appears* Pre-order the new DLC: Legacy of the Kingdom, today!\n"}, //Room 14
+		{"The Block Chainber seems important, but you don't really know what it does.\n"}, //Room 15
+		{"You're going to have a bad time.\n"}, //Room 16
+		{"The Lab contains research on how to easily explain cryptocurrency."}, //Room 17
+		{"In the Throne Room, you find a robot cleaning the area,\n"
+			"a robot that seems to be misplaced from the game Earthbound.\n"
+			"You explore the room and find nothing.\n"
+			"Desperate to find a way forward, you attack the robot!\n"
+			"The robot does not take kindly to this and attacks!\n"}, //Room 18
+		{"You descend the elevator and arrive in a room that is probably a Vault.\n"
+			"The room contains nothing but a wallet on the floor.\n"
+			"You open the wallet and a note is inside.\n"
+			"On the note is written a hash.\n"
+			"You decipher the hash and get a key.\n"
+			"You use the key on the keyhole that was underneath the wallet you picked up.\n"
+			"The key opens a door!\n"
+			"Behind the door, a robot congratulates you!\n"
+			"The Robot says: The new Coin Mining Algorithm is a success!\n"
+			"By completing this adventure, you have earned one Adventure Coin!\n"
+			"The robot then shuts down.\n"
+			"Somewhat satisfied, you leave with your one Adventure Coin.\n"
+			"...........\n"} }; //Room 19
 }

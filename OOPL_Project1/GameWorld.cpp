@@ -5,16 +5,12 @@ GameWorld::GameWorld() {
 	std::string ending;
 
 	//Create new Player: Player(int health, int damage, std::string name);
-	this->player_ = new Player(1, 100, "Chappie");
+	this->player_ = new Player(1000, 100, "Chappie");
 	game_over_ = false;
 
 	// Initial Inventory
-	HealthPotion* healpotion0 = new HealthPotion();
-	player_->AddItemToInventory(healpotion0);
-	MasterBall* newBall = new MasterBall();
-	player_->AddItemToInventory(newBall);
-	BitCoin* firstCoin = new BitCoin();
-	player_->AddItemToInventory(firstCoin);
+	player_->AddItemToInventory(new HealthPotion());
+	player_->AddItemToInventory(new BitCoin());
 
 	// Creating dungeon
 	new_dungeon_ = new Dungeon();
@@ -35,19 +31,24 @@ GameWorld::GameWorld() {
 void GameWorld::displayMenu() {
 	std::string input;
 
+	// Shows the intro story for the room if there is one
 	if (currentRoom->hasStory()) {
 		std::cout << currentRoom->getStory();
 		currentRoom->setStory("");
 	}
+	// Initiates enemy encounter in room if there are any
 	if (currentRoom->hasEnemies()) {
 		combatMenu();
 	}
-	if (!game_over_) {
-		currentRoom->getDescription();
-	}
+	// Bool that checks if the current room is the endgame room, ends the game if so
 	if (new_dungeon_->endRoom(currentRoom)) {
 		game_over_ = true;
 	}
+	// Gets the room description if the player hasn't hit a game over state from combat
+	if (!game_over_) {
+		currentRoom->getDescription();
+	}
+	// Displays them main exploration menu to the player upon entering a room
 	while (!game_over_){
 		input = "";
 		std::cout << "1. NORTH" << "  " << "2. SOUTH" << "     " << "3. EAST" << "   " << "4. WEST" << std::endl;
@@ -56,7 +57,6 @@ void GameWorld::displayMenu() {
 		std::getline(std::cin, input);
 
 		// Navigation Block 1,2,3,4:  N,S,E,W
-		// break out navigation into it's own function? and other options
 		if (input == "1" || input == "NORTH") {
 			if (currentRoom->getNorth()) {
 				prev_room_ = currentRoom;
@@ -108,7 +108,7 @@ void GameWorld::displayMenu() {
 				currentRoom->printItems();
 			}
 			if (currentRoom->getChests().empty()) {
-				std::cout << "There's are no chests in here" << std::endl;
+				std::cout << "There are no chests in here" << std::endl;
 			}
 			else {
 				std::cout << "The room contains the following chest(s)" << std::endl;
@@ -173,6 +173,7 @@ void GameWorld::displayMenu() {
 					}
 					if (currentRoom->getChests().empty()) {
 						std::cout << "No more chests remain in the room." << std::endl;
+						break;
 					}
 				} while (input != "q" && !currentRoom->getItems().empty());
 			}
@@ -297,7 +298,7 @@ void GameWorld::combatMenu() {
 			}
 		}
 		if (input == "5") {
-			std::cout << "You run away like a coward while" << std::endl;
+			std::cout << "You run away while" << std::endl;
 			for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
 				std::cout<< currentRoom->getEnemies()[i]->GetName();
 				std::cout << " laughs at you!" << std::endl;
@@ -436,6 +437,10 @@ void GameWorld::gameEndings(std::string ending) {
 		std::cout << "\nGame Over! You died" << std::endl;
 	}
 	else if (ending == "vault") {
-		std::cout << "Ending text" << std::endl << std::endl;
+		std::cout << "You later sell that one Adventure Coin for a ridiculous sum of money,\n"
+			"the one Adventure Coin is later sold for an even more ridiculous sum of money.\n"
+			"Wars are fought, battles are won and lost over the one Coin.\n"
+			"Eventually the coin falls into a volcano, crashing the world economy.\n" << std::endl;
+		std::cout << "The End!" << std::endl << std::endl;
 	}
 }

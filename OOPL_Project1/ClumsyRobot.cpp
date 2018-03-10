@@ -5,11 +5,16 @@
 ClumsyRobot::ClumsyRobot(std::string name): Robot(ClumsyRobot::defaultHealth, ClumsyRobot::defaultDamage, name){
 	AddItemToInventory(new HamSandwich());
 	AddItemToInventory(new HamSandwich());
+	AddItemToInventory(new HamSandwich());
 }
 
 
 ClumsyRobot::~ClumsyRobot() {
-	std::cout << GetName() << " relays a sad tale of it's origins" << std::endl;
+	std::cout << GetName() << " explodes!" << std::endl;
+	std::cout << "BOOOOOOOOM!!" << std::endl;
+	std::cout << "............" << std::endl;
+	std::cout << "After the dust settles, a part of the wall was damaged by the explosion,\n"
+		"revealing an elevator leading to the Vault!" << std::endl;
 }
 
 

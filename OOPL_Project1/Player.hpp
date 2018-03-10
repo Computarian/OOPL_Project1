@@ -17,9 +17,9 @@ private:
 	const static int mana_ = 100;
 	// bolt spell stats
 	int bolt_cost_ = 50;
-	int bolt_damage_ = 125;
+	int bolt_damage_ = 300;
 	int cure_cost_ = 25;
-	int cure_heal_ = 100;
+	int cure_heal_ = 300;
 
 };
 

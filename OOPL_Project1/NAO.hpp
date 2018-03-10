@@ -18,8 +18,8 @@ public:
 	void dab(CombatUnit* target);
 private:
 	const static int defaultHealth = 400;
-	const static int defaultDamage = 40;
-	int fall_over_damage_ = 20;
+	const static int defaultDamage = 20;
+	int fall_over_damage_ = 40;
 	int slipped_damage_ = 10;
 };
 

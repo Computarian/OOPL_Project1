@@ -37,6 +37,7 @@ public:
 	void generateChests();
 	void generateEnemies();
 	void generateStory();
+
 	void doorTable();
 	void descriptionTable();
 	void itemTable();

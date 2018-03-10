@@ -130,7 +130,6 @@ void Room::printItems() {
 		std::cout << i + 1 << ". ";
 		items_[i]->PrintData();
 	}
-	std::cout << std::endl;
 }
 
 
@@ -139,7 +138,6 @@ void Room::printChests() {
 		std::cout << i + 1 << ". ";
 		std::cout << chests_[i]->getName() << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 

@@ -13,7 +13,7 @@ public:
 	void leechSeed(CombatUnit* target);
 	void vineWhip(CombatUnit* target);
 private:
-	const static int defaultHealth = 100;
+	const static int defaultHealth = 500;
 	const static int defaultDamage = 20;
 	int leech_seed_damage_ = 10;
 	int vine_whip_damage_ = 50;
