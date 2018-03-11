@@ -10,6 +10,7 @@ GameWorld::GameWorld() {
 		std::cout << "Please name the player character: ";
 		getline(std::cin, playerName);
 	} while (playerName.length() < 1);
+	std::cout<<std::endl;
 
 	//Create new Player: Player(int health, int damage, std::string name);
 	this->player_ = new Player(1000, 100, playerName);

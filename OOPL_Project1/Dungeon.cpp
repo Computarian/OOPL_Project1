@@ -293,7 +293,7 @@ void Dungeon::storyTable() {
 		"the tales of the Lost Bitcoin Vault lead here,\nyou begin your search..\n\n"}, //Room 0
 		{"The once prosperous City has fallen to ruin...\n"}, //Room 1
 		{"You begin moving westward across the snow field,\n"
-			"You continue your journy following the snow covered train tracks to the mine.\n"}, //Room 2
+			"You continue your journey following the snow covered train tracks to the mine.\n"}, //Room 2
 		{"You thought the mines were abandoned, but a wild troll appears!\n"
 			"They have the ability to regen, but overall aren't too tough.\n"}, //Room 3
 		{"You enter the break room and a lone troll seems upset you interrupted them.\n"}, //Room 4
@@ -312,7 +312,8 @@ void Dungeon::storyTable() {
 		{"You try to enter the Museum, but blocking the way is a very large rock!\n"}, //Room 11
 		{"The Conservatory contains various flora native to the Kingdom,\n"
 			"before it became frozen over.\n"}, //Room 12
-		{"The Grand Hall leads to the Throne Room, but two NAO robots are guarding the way forward!"}, //Room 13
+		{"The Grand Hall leads to the Throne Room,\n"
+			"but two NAO robots are guarding the way forward!"}, //Room 13
 		{"No one knows what happened to the royal family after the Kingdom fell.\n"
 			"*A notification appears* Pre-order the new DLC: Legacy of the Kingdom, today!\n"}, //Room 14
 		{"The Block Chainber seems important, but you don't really know what it does.\n"}, //Room 15

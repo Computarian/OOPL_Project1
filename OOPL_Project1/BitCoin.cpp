@@ -1,4 +1,4 @@
-#include "Bitcoin.hpp"
+#include "BitCoin.hpp"
 
 
 
