@@ -5,7 +5,7 @@
 #include "HamSandwich.hpp"
 
 
-// Earthbound's Clumsy Robot enemy
+//Eventually became the Final Boss
 class ClumsyRobot : public Robot{
 
 public:

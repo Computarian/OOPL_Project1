@@ -1,14 +1,17 @@
 #include "Item.hpp"
 
+
+
 Item::Item(std::string name, std::string description) {
-	this->name = name;
+	this->name_ = name;
 	this->description_ = description;
 }
 
 
 std::string Item::GetName() {
-	return this->name;
+	return this->name_;
 }
+
 
 std::string Item::GetDescription() {
 	return this->description_;

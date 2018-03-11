@@ -1,6 +1,7 @@
 #include "Mimic.hpp"
 
 
+
 Mimic::Mimic(std::string name): Enemy(Mimic::defaultHealth, Mimic::defaultDamage, name) {
 	
 }

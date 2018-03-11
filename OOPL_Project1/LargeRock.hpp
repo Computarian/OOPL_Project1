@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LARGEROCK_HPP
+#define LARGEROCK_HPP
 
 #include "Enemy.hpp"
 
@@ -7,6 +8,7 @@ public:
 	LargeRock(std::string name);
 	~LargeRock();
 	void makeMove(int move, CombatUnit* target);
+
 private:
 	const static int defaulthealth = 2000;
 	const static int defaultDamage = 0;
@@ -16,3 +18,4 @@ private:
 
 };
 
+#endif //LARGEROCK_HPP

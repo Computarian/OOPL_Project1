@@ -6,7 +6,6 @@ CombatUnit::CombatUnit(int health, int damage, std::string name) {
 	this->health = health;
 	this->damage = damage;
 	this->name = name;
-	//std::cout << "CombatUnit health: " << this->health << " CombatUnit damage: " << this->damage << std::endl;
 }
 
 
@@ -109,7 +108,7 @@ void CombatUnit::DealDamage(CombatUnit* target) {
 
 
 void CombatUnit::PrintStats() {
-	std::cout << this->name << "'s health: " << this->health << "\tDamage: " << this->damage;
+	std::cout << this->name << "'s Health: " << this->health << "\tDamage: " << this->damage;
 	if (has_mana_) {
 		std::cout << "\tMana: " << this->mana_;
 	}

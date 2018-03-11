@@ -12,6 +12,7 @@ public:
 	void growl(CombatUnit* target);
 	void leechSeed(CombatUnit* target);
 	void vineWhip(CombatUnit* target);
+
 private:
 	const static int defaultHealth = 500;
 	const static int defaultDamage = 20;

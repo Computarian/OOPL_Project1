@@ -3,8 +3,6 @@
 
 #include "Item.hpp"
 #include "CombatUnit.hpp"
-#include <vector>
-#include <string>
 
 class Player : public CombatUnit {
 public:
@@ -13,14 +11,14 @@ public:
 	void makeMove(int move, CombatUnit* target);
 	void boltMagic(CombatUnit* target);
 	void cureMagic(CombatUnit* target);
+
 private:
 	const static int mana_ = 100;
-	// bolt spell stats
+	//spell stats
 	int bolt_cost_ = 50;
 	int bolt_damage_ = 300;
 	int cure_cost_ = 25;
 	int cure_heal_ = 300;
-
 };
 
 #endif //PLAYER_HPP

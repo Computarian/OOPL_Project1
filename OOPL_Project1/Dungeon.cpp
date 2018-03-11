@@ -3,7 +3,7 @@
 
 
 Dungeon::Dungeon(){
-
+	//creating the dungeon rooms first, then generates the tables and dungeon contents
 	generateRooms();
 	doorTable();
 	descriptionTable();
@@ -88,31 +88,34 @@ void Dungeon::generateEnemies() {
 }
 
 
+// generates one time intro story to rooms
 void Dungeon::generateStory() {
 	for (int i = 0; i < DUNGEON_SIZE; i++) {
 		dungeon_[i]->setStory(story_[i]);
 	}
 }
+
+
 // room doors to other rooms: {NORTH, SOUTH, EAST, WEST}
 void Dungeon::doorTable() {
 	doors_ = { { nullptr, nullptr, dungeon_[1], dungeon_[2] }, //Room 0: Start Room
-		{ nullptr, nullptr, nullptr, dungeon_[0] }, //Room 1
-		{ dungeon_[3], nullptr, dungeon_[0], nullptr }, //Room 2
-		{ dungeon_[5], dungeon_[2], nullptr, dungeon_[4]}, //Room 3
-		{ nullptr, nullptr, dungeon_[3], nullptr}, //Room 4
-		{ nullptr, dungeon_[3], dungeon_[6], nullptr }, //Room 5
-		{ dungeon_[8], nullptr, dungeon_[7], dungeon_[5] }, //Room 6
+		{ nullptr, nullptr, nullptr, dungeon_[0] }, //Room 1: City
+		{ dungeon_[3], nullptr, dungeon_[0], nullptr }, //Room 2: Snow Field
+		{ dungeon_[5], dungeon_[2], nullptr, dungeon_[4]}, //Room 3: Mine Entrance
+		{ nullptr, nullptr, dungeon_[3], nullptr}, //Room 4: Mines Lv1
+		{ nullptr, dungeon_[3], dungeon_[6], nullptr }, //Room 5: Break Room
+		{ dungeon_[8], nullptr, dungeon_[7], dungeon_[5] }, //Room 6: Mines Lvl2
 		{ nullptr, nullptr, nullptr, dungeon_[6] }, //Room 7: Bulbasaur Room
-		{ dungeon_[9], dungeon_[6], nullptr, nullptr }, //Room 8
-		{ nullptr, dungeon_[8], dungeon_[17], dungeon_[10] }, //Room 9
-		{ dungeon_[11], nullptr, dungeon_[9], nullptr }, //Room 10
-		{ dungeon_[12], dungeon_[10], nullptr, nullptr }, //Room 11: NAO Robot Boss
-		{ nullptr, dungeon_[11], dungeon_[13], nullptr }, //Room 12
-		{ dungeon_[18], nullptr, dungeon_[14], dungeon_[12] }, //Room 13
-		{ nullptr, dungeon_[15], nullptr, dungeon_[13]}, //Room 14
-		{ dungeon_[14], dungeon_[17], dungeon_[16], nullptr }, //Room 15: Clumsy Robot Boss
+		{ dungeon_[9], dungeon_[6], nullptr, nullptr }, //Room 8: Courtyard
+		{ nullptr, dungeon_[8], dungeon_[17], dungeon_[10] }, //Room 9: Castle Entrance
+		{ dungeon_[11], nullptr, dungeon_[9], nullptr }, //Room 10: Kitchen
+		{ dungeon_[12], dungeon_[10], nullptr, nullptr }, //Room 11: Museum
+		{ nullptr, dungeon_[11], dungeon_[13], nullptr }, //Room 12: Conservatory
+		{ dungeon_[18], nullptr, dungeon_[14], dungeon_[12] }, //Room 13: Grand Hall
+		{ nullptr, dungeon_[15], nullptr, dungeon_[13]}, //Room 14: Royal Chambers
+		{ dungeon_[14], dungeon_[17], dungeon_[16], nullptr }, //Room 15: Block Chainber
 		{ nullptr, nullptr, nullptr, dungeon_[15] }, //Room 16: Chinchilla Chamber
-		{ dungeon_[15], nullptr, nullptr, dungeon_[9] }, //Room 17
+		{ dungeon_[15], nullptr, nullptr, dungeon_[9] }, //Room 17: Lab
 		{ dungeon_[19], dungeon_[13], nullptr, nullptr }, //Room 18: Final Boss Room
 		{ nullptr, dungeon_[18], nullptr, nullptr } }; //Room 19: Goal Room
 }
@@ -190,7 +193,7 @@ void Dungeon::descriptionTable() {
 		"North leads to the Block Chainber.\n",
 		//Room 18
 		"--Throne Room--\n"
-		"North is a secret passage is an elevator leading down to the Vault!\n",
+		"North is a secret passage which contains an elevator leading down to the Vault!\n",
 		//Room 19
 		"--The Vault--\n"
 		"You did it!\n" };
@@ -287,23 +290,22 @@ void Dungeon::enemyTable() {
 void Dungeon::storyTable() {
 	story_ = { 
 		{"You have finally arrived at the Kingdom,\n"
-		"the tales of the D. Ragon's Lost Bitcoin Vault lead here,\nyou begin your search..\n\n"}, //Room 0
+		"the tales of the Lost Bitcoin Vault lead here,\nyou begin your search..\n\n"}, //Room 0
 		{"The once prosperous City has fallen to ruin...\n"}, //Room 1
 		{"You begin moving westward across the snow field,\n"
-			"numerous abandoned coin loaders lay strewn about.\n"
-			"You continue your journy following the snow covered tracks to the mine.\n"}, //Room 2
-		{"You thought the mines were abanoned, but a wild troll appears!\n"
+			"You continue your journy following the snow covered train tracks to the mine.\n"}, //Room 2
+		{"You thought the mines were abandoned, but a wild troll appears!\n"
 			"They have the ability to regen, but overall aren't too tough.\n"}, //Room 3
 		{"You enter the break room and a lone troll seems upset you interrupted them.\n"}, //Room 4
 		{"You see a pile of burnt out video cards and discarded fans in the corner.\n"
 			"Two trolls are seen scavenging for good parts.\n"}, //Room 5
-		{"After taking the Funicular and not having to fight anything oddly enough,\n"
+		{"After taking the Funicular and not having to fight anything on it oddly enough,\n"
 			"you reach the castle gates. Although to the east lies the Data Furnace,\n"
 			"which could contain some treasure...\n"}, //Room 6
 		{"The Data Furnace was used to heat the Kingdom during the Bitcoin Boom,\n"
 			"but eventually the mines began to run dry, draining the Kingdom's wealth and warmth.\n"}, //Room 7
 		{"Despite the Kingdom's fall during the Crypto Wars,\n"
-			"the Castle remains in fairly good condition."}, //Room 8
+			"the Castle remains in fairly good condition.\n"}, //Room 8
 		{"The interior of the Castle is quite grand and meticulously cleaned.\n"
 			"To the west is a Kitchen, and to the east is the Lab.\n"}, //Room 9
 		{"The Kitchen would probably be a good time to stock up the Inventory.\n"}, //Room 10

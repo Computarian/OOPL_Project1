@@ -13,6 +13,7 @@ public:
 	std::string getName();
 	void setChestEnemy(Enemy* chestEnemy);
 	Enemy* getEnemy();
+
 private:
 	std::vector<Item*> loot_;
 	Enemy* chest_enemy_;

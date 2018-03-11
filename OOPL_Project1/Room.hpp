@@ -1,9 +1,6 @@
 #ifndef ROOM_HPP
 #define ROOM_HPP
 
-#include <string>
-#include <iostream>
-#include <vector>
 #include "Enemy.hpp"
 #include "Item.hpp"
 #include "Chest.hpp"
@@ -55,7 +52,6 @@ private:
 	Room* east_;
 	Room* west_;
 	std::string story_;
-	
 };
 
 #endif //ROOM_HPP

@@ -3,9 +3,16 @@
 
 GameWorld::GameWorld() {
 	std::string ending;
+	std::string playerName;
+
+	do {
+		playerName = "";
+		std::cout << "Please name the player character: ";
+		getline(std::cin, playerName);
+	} while (playerName.length() < 1);
 
 	//Create new Player: Player(int health, int damage, std::string name);
-	this->player_ = new Player(1000, 100, "Chappie");
+	this->player_ = new Player(1000, 100, playerName);
 	game_over_ = false;
 
 	// Initial Inventory
@@ -20,8 +27,7 @@ GameWorld::GameWorld() {
 	// Deciding on an ending
 	if (player_->GetHealth() < 1) {
 		ending = "death";
-	}
-	else {
+	} else {
 		ending = "vault";
 	}
 	gameEndings(ending);
@@ -51,6 +57,7 @@ void GameWorld::displayMenu() {
 	// Displays them main exploration menu to the player upon entering a room
 	while (!game_over_){
 		input = "";
+
 		std::cout << "1. NORTH" << "  " << "2. SOUTH" << "     " << "3. EAST" << "   " << "4. WEST" << std::endl;
 		std::cout << "5. SEARCH" << " " << "6. TAKE" << "      " << "7. OPEN" << std::endl;
 		std::cout << "8. LOOK" << "   " << "9. INVENTORY" << " " << "10. STATS" << std::endl;
@@ -98,8 +105,10 @@ void GameWorld::displayMenu() {
 				std::cout << "A large wall blocks your way westward" << std::endl;
 			}
 		}
+
+		//SEARCH: searches room and identifies items and chests within
 		if (input == "5") {
-			//perform some kind of item, chest looking thing here too
+
 			if (currentRoom->getItems().empty()) {
 				std::cout << "There are no items left in here" << std::endl;
 			}
@@ -115,6 +124,7 @@ void GameWorld::displayMenu() {
 				currentRoom->printChests();
 			}
 		}
+		//TAKE: Take items from room, not in chests
 		if (input == "6") {
 			if (currentRoom->getItems().empty()) {
 				std::cout << "There's nothing to take!" << std::endl;
@@ -131,7 +141,6 @@ void GameWorld::displayMenu() {
 							std::cout << player_->GetName() << " added " << currentRoom->getItems()[i]->GetName();
 							std::cout << " to inventory!" << std::endl;
 							currentRoom->removeItem(currentRoom->getItems()[i]);
-
 						}
 					}
 					if (currentRoom->getItems().empty()) {
@@ -140,6 +149,7 @@ void GameWorld::displayMenu() {
 				} while (input != "q" && !currentRoom->getItems().empty());
 			}
 		}
+		//OPEN: player can open chests within room and loot their contents, some chests have monsters!
 		if (input == "7") {
 			if (currentRoom->getChests().empty()) {
 				std::cout << "There are no chests in here" << std::endl;
@@ -153,6 +163,8 @@ void GameWorld::displayMenu() {
 					for (int i = 0; i < currentRoom->getChests().size(); i++) {
 						if (input == currentRoom->getChests()[i]->getName() || input == std::to_string(i + 1)) {
 							std::cout << player_->GetName() << " opens the " << currentRoom->getChests()[i]->getName() << " and it contains: " << std::endl;
+
+							//Logic for monster chests
 							if (currentRoom->getChests()[i]->getEnemy()) {
 								std::cout << currentRoom->getChests()[i]->getEnemy()->GetName() << " startles you!" << std::endl;
 								// slightly messy way to work around targeting system being based off room enemies
@@ -162,6 +174,7 @@ void GameWorld::displayMenu() {
 								currentRoom->getChests()[i]->setChestEnemy(nullptr);
 								combatMenu();
 							}
+							//Player adds all chest contents to inventory
 							for (int j = 0; j < currentRoom->getChests()[i]->getLoot().size(); j++) {
 								player_->AddItemToInventory(currentRoom->getChests()[i]->getLoot()[j]);
 								std::cout << player_->GetName() << " added " << currentRoom->getChests()[i]->getLoot()[j]->GetName();
@@ -178,9 +191,11 @@ void GameWorld::displayMenu() {
 				} while (input != "q" && !currentRoom->getItems().empty());
 			}
 		}
+		//LOOK: Repeats the room description, generally has directions to nearby rooms
 		if (input == "8") {
 			currentRoom->getDescription();
 		}
+		//INVENTORY: Opens the non-combat inventory, player can use as many items in a row as they'd like outside of combat
 		if (input == "9") {
 			if (player_->getInventory().empty()) {
 				std::cout << "Inventory is empty!" << std::endl;
@@ -188,6 +203,7 @@ void GameWorld::displayMenu() {
 				openInventory();
 			}
 		}
+		//STATS: Prints the player's stats(Health, Damage, Mana)
 		if (input == "10") {
 			this->player_->PrintStats();
 		}
@@ -195,7 +211,7 @@ void GameWorld::displayMenu() {
 }
 
 
-// Inventory Menu, can be used during combat
+// Inventory Menu, non-combat version
 void GameWorld::openInventory() {
 	std::string input;
 
@@ -240,6 +256,7 @@ void GameWorld::combatMenu() {
 	CombatUnit* target = nullptr;
 	Item* combatItem = nullptr;
 
+	//Lists the enemies encountered
 	for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
 		std::cout << currentRoom->getEnemies()[i]->GetName() << " has appeared!" << std::endl;
 	}
@@ -257,12 +274,14 @@ void GameWorld::combatMenu() {
 		std::cout << "5. Flee!" << std::endl;
 		getline(std::cin, input);
 
+		//attack an enemy
 		if (input == "1") {
 			target = selectTarget();
 			if (target) {
 				combatTurn(use_attack_, target);
 			}
 		}
+		//magic spell selection
 		if (input == "2") {
 			magicSpell = magicMenu();
 			if (magicSpell != 0) {
@@ -272,6 +291,7 @@ void GameWorld::combatMenu() {
 				}
 			}
 		}
+		//open combat inventory
 		if (input == "3") {
 			if (player_->getInventory().empty()) {
 				std::cout << "Inventory is empty!" << std::endl;
@@ -288,6 +308,7 @@ void GameWorld::combatMenu() {
 				}
 			}
 		}
+		//scans enemies and displays their stats
 		if (input == "4") {
 			target = player_;
 			if (target) {
@@ -297,6 +318,7 @@ void GameWorld::combatMenu() {
 				combatTurn(use_scan_, target);
 			}
 		}
+		//escape the current room and return to the previously explored room
 		if (input == "5") {
 			std::cout << "You run away while" << std::endl;
 			for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
@@ -338,6 +360,7 @@ CombatUnit* GameWorld::selectTarget() {
 }
 
 
+//logic for once player commits to a move
 void GameWorld::combatTurn(int move, CombatUnit* target) {
 	int randomMove = 0;
 
@@ -351,15 +374,13 @@ void GameWorld::combatTurn(int move, CombatUnit* target) {
 				std::cout << " to inventory!" << std::endl;
 			}
 		}
-		//delete currentRoom->targetEnemy();
 		currentRoom->removeEnemy(target);
 	}
 
 	// Enemies take their turn
 	for (int i = 0; i < currentRoom->getEnemies().size(); i++) {
-		// d20 reference >:)
+		//random number generator used to select majority of enemy moves
 		randomMove = rand() % 100 + 1;
-		//std::cout << "Random move number: "<< move << std::endl;
 		currentRoom->getEnemies()[i]->makeMove(randomMove, player_);
 		if (player_->GetHealth() < 1) {
 			//end game from combat somehow
@@ -374,6 +395,7 @@ void GameWorld::combatTurn(int move, CombatUnit* target) {
 }
 
 
+//magic menu, use to select a magic spell
 int GameWorld::magicMenu() {
 	std::string input;
 
@@ -395,6 +417,7 @@ int GameWorld::magicMenu() {
 }
 
 
+//combat version of inventory, once player uses an item, their turn ends
 Item* GameWorld::combatInventory() {
 	std::string input;
 
@@ -432,6 +455,7 @@ Item* GameWorld::combatInventory() {
 }
 
 
+//Displays an ending depending on conditions reached
 void GameWorld::gameEndings(std::string ending) {
 	if (ending == "death") {
 		std::cout << "\nGame Over! You died" << std::endl;

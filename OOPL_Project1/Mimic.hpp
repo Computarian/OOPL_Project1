@@ -11,6 +11,7 @@ public:
 	void makeMove(int move, CombatUnit* target);
 	void shootCan(CombatUnit* target);
 	void chomp(CombatUnit* target);
+
 private:
 	const static int defaultHealth = 500;
 	const static int defaultDamage = 20;

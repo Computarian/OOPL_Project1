@@ -3,30 +3,29 @@
 
 #include "Dungeon.hpp"
 #include "Player.hpp"
-#include "Enemy.hpp"
-#include "Item.hpp"
 
-class GameWorld
-{
+class GameWorld {
 public:
 	GameWorld();
 	void displayMenu();
 	void openInventory();
 	
+	//Combat encounter menus
 	void combatMenu();
 	CombatUnit* selectTarget();
 	void combatTurn( int move, CombatUnit* target);
 	int magicMenu();
 	Item* combatInventory();
 
-	// have this be based off different conditions
 	void gameEndings(std::string ending);
+
 private:
 	Player * player_;
 	Dungeon* new_dungeon_;
 	Room* currentRoom;
 	Room* prev_room_;
-	// moves
+
+	// player move selection
 	int use_attack_ = 1;
 	int use_bolt_magic_ = 2;
 	int use_cure_magic_ = 3;

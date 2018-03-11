@@ -3,15 +3,14 @@
 
 #include "Enemy.hpp"
 
-class Troll :
-	public Enemy
-{
+class Troll: public Enemy {
 public:
 	Troll(std::string name);
 	~Troll();
 	void makeMove(int move, CombatUnit* target);
 	void regen();
 	void insult(CombatUnit* target);
+
 private:
 	const static int defaultHealth = 200;
 	const static int defaultDamage = 5;
@@ -19,4 +18,4 @@ private:
 	int insult_damage_ = 10;
 };
 
-#endif TROLL_HPP
+#endif //TROLL_HPP

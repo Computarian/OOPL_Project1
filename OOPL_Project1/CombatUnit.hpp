@@ -2,9 +2,7 @@
 #define COMBATUNIT_HPP
 
 #include <string>
-#include <iostream>
 #include <vector>
-#include <string>
 #include "Item.hpp"
 
 class Item;
@@ -15,6 +13,7 @@ public:
 	// constructor for player/enemies with mana
 	CombatUnit(int health, int damage, int mana, std::string name);
 	virtual ~CombatUnit();
+
 	int GetDefaultHealth();
 	int GetHealth();
 	int GetDamage();

@@ -13,7 +13,6 @@ Chinchilla::~Chinchilla() {
 
 
 void Chinchilla::makeMove(int move, CombatUnit* target) {
-	//CombatUnit::makeMove(move, target);
 	if (move < 25) {
 		DealDamage(target);
 	}

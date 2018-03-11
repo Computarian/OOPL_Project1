@@ -3,7 +3,6 @@
 
 #define DUNGEON_SIZE 20
 
-#include <vector>
 #include "Room.hpp"
 
 #include "Item.hpp"
@@ -22,14 +21,14 @@
 #include "Bulbasaur.hpp"
 #include "Troll.hpp"
 
-class Dungeon
-{
+class Dungeon {
 public:
 	Dungeon();
 	Room* getStartRoom();
 	bool endRoom(Room *currentRoom);
 	std::vector<Room*> getDungeon();
 
+	//generates Dungeon contents
 	void generateRooms();
 	void generateDoors();
 	void generateDescriptions();
@@ -38,6 +37,7 @@ public:
 	void generateEnemies();
 	void generateStory();
 
+	//tables to store Dungeon content
 	void doorTable();
 	void descriptionTable();
 	void itemTable();

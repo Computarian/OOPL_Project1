@@ -3,7 +3,6 @@
 
 #include "CombatUnit.hpp"
 #include <iostream>
-#include <string>
 
 class CombatUnit;
 
@@ -15,8 +14,9 @@ public:
 	void SetDescription(std::string description);
 	void PrintData();
 	virtual void Effect(CombatUnit* target) = 0;
+
 private:
-	std::string name;
+	std::string name_;
 	std::string description_;
 };
 

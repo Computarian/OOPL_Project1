@@ -122,6 +122,7 @@ Enemy* Room::targetEnemy(Enemy * enemy) {
 			return enemies_[i];
 		}
 	}
+	return nullptr;
 }
 
 

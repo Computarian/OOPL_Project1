@@ -7,6 +7,7 @@ class HealthPotion : public Item {
 public:
 	HealthPotion();
 	void Effect(CombatUnit* target);
+
 private:
 	int health_potion_heal_ = 50;
 };

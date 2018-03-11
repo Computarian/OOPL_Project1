@@ -2,6 +2,7 @@
 #define CUTE_HPP
 
 #include "Enemy.hpp"
+
 class Cute : public Enemy {
 public:
 	Cute(int health, int damage, std::string name);
