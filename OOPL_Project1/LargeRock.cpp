@@ -30,7 +30,7 @@ void LargeRock::makeMove(int move, CombatUnit* target) {
 		std::cout << "It's a big rock, what do you think is going to happen?" << std::endl;
 	}
 	else if (move >= 50 && move < 75) {
-		std::cout << target->GetName() << " whistles a catchy tune!\n...unfortunately this is text adventure, so you can't hear it. :(" << std::endl;
+		std::cout << target->GetName() << " whistles a catchy tune!\n...unfortunately this is a text adventure, so you can't hear it. :(" << std::endl;
 	}
 	else {
 		std::cout<<"Some cracks appear in the rock..." << std::endl;

@@ -313,12 +313,12 @@ void Dungeon::storyTable() {
 		{"The Conservatory contains various flora native to the Kingdom,\n"
 			"before it became frozen over.\n"}, //Room 12
 		{"The Grand Hall leads to the Throne Room,\n"
-			"but two NAO robots are guarding the way forward!"}, //Room 13
+			"but two NAO robots are guarding the way forward!\n"}, //Room 13
 		{"No one knows what happened to the royal family after the Kingdom fell.\n"
 			"*A notification appears* Pre-order the new DLC: Legacy of the Kingdom, today!\n"}, //Room 14
 		{"The Block Chainber seems important, but you don't really know what it does.\n"}, //Room 15
 		{"You're going to have a bad time.\n"}, //Room 16
-		{"The Lab contains research on how to easily explain cryptocurrency."}, //Room 17
+		{"The Lab contains research on how to easily explain cryptocurrency.\n"}, //Room 17
 		{"In the Throne Room, you find a robot cleaning the area,\n"
 			"a robot that seems to be misplaced from the game Earthbound.\n"
 			"You explore the room and find nothing.\n"

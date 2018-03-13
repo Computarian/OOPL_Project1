@@ -17,7 +17,7 @@ void Mimic::makeMove(int move, CombatUnit* target) {
 	if (move < 50) {
 		DealDamage(target);
 	}
-	if (move >= 51 && move < 90) {
+	else if (move >= 51 && move < 90) {
 		shootCan(target);
 	}
 	else {
